@@ -77,9 +77,15 @@ class Contact
     private $babysitting;
     /**
      * @ORM\OneToOne(targetEntity=Housekeeping::class, cascade={"persist", "remove"})
-     * @ORM\JoinColumn(nullable=false)
+    
      */
     private $housekeeping;
+
+    /**
+     * @ORM\OneToOne(targetEntity=PersonalAssistanceService::class, cascade={"persist", "remove"})
+     
+     */
+    private $personalAssistanceService;
 
     public function getId(): ?int
     {
@@ -237,6 +243,18 @@ class Contact
     public function setHousekeeping(Housekeeping $housekeeping): self
     {
         $this->housekeeping = $housekeeping;
+
+        return $this;
+    }
+
+    public function getPersonalAssistanceService(): ?PersonalAssistanceService
+    {
+        return $this->personalAssistanceService;
+    }
+
+    public function setPersonalAssistanceService(PersonalAssistanceService $personalAssistanceService): self
+    {
+        $this->personalAssistanceService = $personalAssistanceService;
 
         return $this;
     }
