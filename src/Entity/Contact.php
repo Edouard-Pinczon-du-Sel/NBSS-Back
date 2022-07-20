@@ -71,6 +71,23 @@ class Contact
      * @ORM\Column(type="date")
      */
     private $created_at;
+  
+    /**
+     * @ORM\OneToOne(targetEntity=Housekeeping::class, cascade={"persist", "remove"})
+    
+     */
+    private $housekeeping;
+
+    /**
+     * @ORM\OneToOne(targetEntity=PersonalAssistanceService::class, cascade={"persist", "remove"})
+     
+     */
+    private $personalAssistanceService;
+
+    /**
+     * @ORM\OneToOne(targetEntity=AdministrativeDepartment::class, cascade={"persist", "remove"})
+     */
+    private $administrativeDepartment;
 
     public function getId(): ?int
     {
@@ -205,6 +222,43 @@ class Contact
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+    
+    
+    public function getHousekeeping(): ?Housekeeping
+    {
+        return $this->housekeeping;
+    }
+
+    public function setHousekeeping(Housekeeping $housekeeping): self
+    {
+        $this->housekeeping = $housekeeping;
+
+        return $this;
+    }
+
+    public function getPersonalAssistanceService(): ?PersonalAssistanceService
+    {
+        return $this->personalAssistanceService;
+    }
+
+    public function setPersonalAssistanceService(PersonalAssistanceService $personalAssistanceService): self
+    {
+        $this->personalAssistanceService = $personalAssistanceService;
+
+        return $this;
+    }
+
+    public function getAdministrativeDepartment(): ?AdministrativeDepartment
+    {
+        return $this->administrativeDepartment;
+    }
+
+    public function setAdministrativeDepartment(?AdministrativeDepartment $administrativeDepartment): self
+    {
+        $this->administrativeDepartment = $administrativeDepartment;
 
         return $this;
     }

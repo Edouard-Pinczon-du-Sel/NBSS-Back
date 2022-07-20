@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HousekeepingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,19 @@ class Housekeeping
      * @ORM\Column(type="string", length=250)
      */
     private $content;
+
+ 
+
+    /**
+     * @ORM\OneToMany(targetEntity=Frequency::class, mappedBy="housekeeping")
+     */
+    private $frequency;
+
+    public function __construct()
+    {
+        $this->intervention = new ArrayCollection();
+        $this->frequency = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +67,38 @@ class Housekeeping
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+  
+
+    /**
+     * @return Collection<int, Frequency>
+     */
+    public function getFrequency(): Collection
+    {
+        return $this->frequency;
+    }
+
+    public function addFrequency(Frequency $frequency): self
+    {
+        if (!$this->frequency->contains($frequency)) {
+            $this->frequency[] = $frequency;
+            $frequency->setHousekeeping($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFrequency(Frequency $frequency): self
+    {
+        if ($this->frequency->removeElement($frequency)) {
+            // set the owning side to null (unless already changed)
+            if ($frequency->getHousekeeping() === $this) {
+                $frequency->setHousekeeping(null);
+            }
+        }
 
         return $this;
     }

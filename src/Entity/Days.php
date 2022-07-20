@@ -22,6 +22,8 @@ class Days
      */
     private $name;
 
+  
+
     public function getId(): ?int
     {
         return $this->id;
@@ -38,4 +40,6 @@ class Days
 
         return $this;
     }
+
+  
 }
