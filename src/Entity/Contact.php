@@ -71,6 +71,15 @@ class Contact
      * @ORM\Column(type="date")
      */
     private $created_at;
+  /**
+     * @ORM\OneToOne(targetEntity=BabysittingService::class, cascade={"persist", "remove"})
+     */
+    private $babysitting;
+    /**
+     * @ORM\OneToOne(targetEntity=Housekeeping::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $housekeeping;
 
     public function getId(): ?int
     {
@@ -205,6 +214,29 @@ class Contact
     public function setCreatedAt(\DateTimeInterface $created_at): self
     {
         $this->created_at = $created_at;
+
+        return $this;
+    }
+    public function getBabysitting(): ?BabysittingService
+    {
+        return $this->babysitting;
+    }
+
+    public function setBabysitting(?BabysittingService $babysitting): self
+    {
+        $this->babysitting = $babysitting;
+
+        return $this;
+    }
+    
+    public function getHousekeeping(): ?Housekeeping
+    {
+        return $this->housekeeping;
+    }
+
+    public function setHousekeeping(Housekeeping $housekeeping): self
+    {
+        $this->housekeeping = $housekeeping;
 
         return $this;
     }

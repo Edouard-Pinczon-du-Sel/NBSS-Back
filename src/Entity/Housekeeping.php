@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\HousekeepingRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -26,6 +28,16 @@ class Housekeeping
      * @ORM\Column(type="string", length=250)
      */
     private $content;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Intervention::class, mappedBy="housekeeping")
+     */
+    private $intervention;
+
+    public function __construct()
+    {
+        $this->intervention = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -52,6 +64,36 @@ class Housekeeping
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Intervention>
+     */
+    public function getIntervention(): Collection
+    {
+        return $this->intervention;
+    }
+
+    public function addIntervention(Intervention $intervention): self
+    {
+        if (!$this->intervention->contains($intervention)) {
+            $this->intervention[] = $intervention;
+            $intervention->setHousekeeping($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIntervention(Intervention $intervention): self
+    {
+        if ($this->intervention->removeElement($intervention)) {
+            // set the owning side to null (unless already changed)
+            if ($intervention->getHousekeeping() === $this) {
+                $intervention->setHousekeeping(null);
+            }
+        }
 
         return $this;
     }

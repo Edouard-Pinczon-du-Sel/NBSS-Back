@@ -22,6 +22,12 @@ class Days
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=BabysittingService::class, inversedBy="days")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $babysittingService;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -35,6 +41,18 @@ class Days
     public function setName(?string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getBabysittingService(): ?BabysittingService
+    {
+        return $this->babysittingService;
+    }
+
+    public function setBabysittingService(?BabysittingService $babysittingService): self
+    {
+        $this->babysittingService = $babysittingService;
 
         return $this;
     }
