@@ -44,9 +44,15 @@ class PersonalAssistanceService
      */
     private $intervention;
 
+    /**
+     * @ORM\OneToMany(targetEntity=PersonalAssistance::class, mappedBy="personalAssistanceService")
+     */
+    private $personalAssistance;
+
     public function __construct()
     {
         $this->intervention = new ArrayCollection();
+        $this->personalAssistance = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -126,6 +132,36 @@ class PersonalAssistanceService
             // set the owning side to null (unless already changed)
             if ($intervention->getPersonalAssistanceService() === $this) {
                 $intervention->setPersonalAssistanceService(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PersonalAssistance>
+     */
+    public function getPersonalAssistance(): Collection
+    {
+        return $this->personalAssistance;
+    }
+
+    public function addPersonalAssistance(PersonalAssistance $personalAssistance): self
+    {
+        if (!$this->personalAssistance->contains($personalAssistance)) {
+            $this->personalAssistance[] = $personalAssistance;
+            $personalAssistance->setPersonalAssistanceService($this);
+        }
+
+        return $this;
+    }
+
+    public function removePersonalAssistance(PersonalAssistance $personalAssistance): self
+    {
+        if ($this->personalAssistance->removeElement($personalAssistance)) {
+            // set the owning side to null (unless already changed)
+            if ($personalAssistance->getPersonalAssistanceService() === $this) {
+                $personalAssistance->setPersonalAssistanceService(null);
             }
         }
 
