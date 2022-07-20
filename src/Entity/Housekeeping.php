@@ -29,8 +29,6 @@ class Housekeeping
      */
     private $content;
 
- 
-
     /**
      * @ORM\OneToMany(targetEntity=Frequency::class, mappedBy="housekeeping")
      */
@@ -70,8 +68,6 @@ class Housekeeping
 
         return $this;
     }
-
-  
 
     /**
      * @return Collection<int, Frequency>

@@ -89,6 +89,11 @@ class Contact
      */
     private $administrativeDepartment;
 
+    /**
+     * @ORM\OneToOne(targetEntity=BabysittingService::class, cascade={"persist", "remove"})
+     */
+    private $babysitting;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -259,6 +264,18 @@ class Contact
     public function setAdministrativeDepartment(?AdministrativeDepartment $administrativeDepartment): self
     {
         $this->administrativeDepartment = $administrativeDepartment;
+
+        return $this;
+    }
+
+    public function getBabysitting(): ?BabysittingService
+    {
+        return $this->babysitting;
+    }
+
+    public function setBabysitting(?BabysittingService $babysitting): self
+    {
+        $this->babysitting = $babysitting;
 
         return $this;
     }
