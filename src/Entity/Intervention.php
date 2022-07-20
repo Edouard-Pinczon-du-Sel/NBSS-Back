@@ -22,11 +22,7 @@ class Intervention
      */
     private $moment;
 
-    /**
-     * @ORM\ManyToOne(targetEntity=BabysittingService::class, inversedBy="intervention")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    private $babysittingService;
+  
 
     /**
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="intervention")
@@ -52,17 +48,7 @@ class Intervention
         return $this;
     }
 
-    public function getBabysittingService(): ?BabysittingService
-    {
-        return $this->babysittingService;
-    }
-
-    public function setBabysittingService(?BabysittingService $babysittingService): self
-    {
-        $this->babysittingService = $babysittingService;
-
-        return $this;
-    }
+ 
 
    
 

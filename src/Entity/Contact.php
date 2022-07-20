@@ -71,10 +71,7 @@ class Contact
      * @ORM\Column(type="date")
      */
     private $created_at;
-  /**
-     * @ORM\OneToOne(targetEntity=BabysittingService::class, cascade={"persist", "remove"})
-     */
-    private $babysitting;
+  
     /**
      * @ORM\OneToOne(targetEntity=Housekeeping::class, cascade={"persist", "remove"})
     
@@ -228,17 +225,7 @@ class Contact
 
         return $this;
     }
-    public function getBabysitting(): ?BabysittingService
-    {
-        return $this->babysitting;
-    }
-
-    public function setBabysitting(?BabysittingService $babysitting): self
-    {
-        $this->babysitting = $babysitting;
-
-        return $this;
-    }
+    
     
     public function getHousekeeping(): ?Housekeeping
     {
