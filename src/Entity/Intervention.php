@@ -32,12 +32,7 @@ class Intervention
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="intervention")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $housekeeping;
-
-    /**
-     * @ORM\ManyToOne(targetEntity=PersonalAssistanceService::class, inversedBy="intervention")
-     * @ORM\JoinColumn(nullable=false)
-     */
+   
     private $personalAssistanceService;
 
     public function getId(): ?int
@@ -69,17 +64,7 @@ class Intervention
         return $this;
     }
 
-    public function getHousekeeping(): ?Housekeeping
-    {
-        return $this->housekeeping;
-    }
-
-    public function setHousekeeping(?Housekeeping $housekeeping): self
-    {
-        $this->housekeeping = $housekeeping;
-
-        return $this;
-    }
+   
 
     public function getPersonalAssistanceService(): ?PersonalAssistanceService
     {

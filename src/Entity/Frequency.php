@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\FrequancyRepository;
+use App\Repository\FrequencyRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=FrequancyRepository::class)
+ * @ORM\Entity(repositoryClass=FrequencyRepository::class)
  */
-class Frequancy
+class Frequency
 {
     /**
      * @ORM\Id
@@ -21,6 +21,12 @@ class Frequancy
      * @ORM\Column(type="string", length=20, nullable=true)
      */
     private $type;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="frequency")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $housekeeping;
 
     public function getId(): ?int
     {
@@ -35,6 +41,18 @@ class Frequancy
     public function setType(?string $type): self
     {
         $this->type = $type;
+
+        return $this;
+    }
+
+    public function getHousekeeping(): ?Housekeeping
+    {
+        return $this->housekeeping;
+    }
+
+    public function setHousekeeping(?Housekeeping $housekeeping): self
+    {
+        $this->housekeeping = $housekeeping;
 
         return $this;
     }
