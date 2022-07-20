@@ -34,10 +34,7 @@ class BabysittingService
      */
     private $content;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Days::class, mappedBy="babysittingService")
-     */
-    private $days;
+   
 
   
 

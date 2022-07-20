@@ -29,10 +29,7 @@ class Housekeeping
      */
     private $content;
 
-    /**
-     * @ORM\OneToMany(targetEntity=Intervention::class, mappedBy="housekeeping")
-     */
-    private $intervention;
+ 
 
     /**
      * @ORM\OneToMany(targetEntity=Frequency::class, mappedBy="housekeeping")
@@ -74,35 +71,7 @@ class Housekeeping
         return $this;
     }
 
-    /**
-     * @return Collection<int, Intervention>
-     */
-    public function getIntervention(): Collection
-    {
-        return $this->intervention;
-    }
-
-    public function addIntervention(Intervention $intervention): self
-    {
-        if (!$this->intervention->contains($intervention)) {
-            $this->intervention[] = $intervention;
-            $intervention->setHousekeeping($this);
-        }
-
-        return $this;
-    }
-
-    public function removeIntervention(Intervention $intervention): self
-    {
-        if ($this->intervention->removeElement($intervention)) {
-            // set the owning side to null (unless already changed)
-            if ($intervention->getHousekeeping() === $this) {
-                $intervention->setHousekeeping(null);
-            }
-        }
-
-        return $this;
-    }
+  
 
     /**
      * @return Collection<int, Frequency>
