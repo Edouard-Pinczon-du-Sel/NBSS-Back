@@ -9,7 +9,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 
 /**
  * @ORM\Entity(repositoryClass=PictureRepository::class)
- * [Vich\Uploadable] 
+ * @Vich\Uploadable
  */
 class Picture
 {
@@ -20,11 +20,26 @@ class Picture
      */
     private $id;
 
-    #[Vich\UploadableField(mapping: 'images', fileNameProperty: 'imageName')]
-    private ?File $imageFile = null;
+    /**
+     * @Vich\UploadableField(mapping="images", fileNameProperty="imageName")
+     * 
+     * @var File|null
+     */
+    private $imageFile;
 
-    #[ORM\Column(type: 'string')]
-    private ?string $imageName = null;
+    /**
+     * @ORM\Column(type="string")
+     *
+     * @var string|null
+     */
+    private $imageName;
+
+    /**
+     * @ORM\Column(type="datetime")
+     *
+     * @var \DateTimeInterface|null
+     */
+    private $updatedAt;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
