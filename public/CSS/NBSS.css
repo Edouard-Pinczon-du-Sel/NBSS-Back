@@ -41,3 +41,8 @@ nav{
   .img{
     height: 4rem;
   }
+  .edition{
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+  }
