@@ -53,7 +53,7 @@ class Contact
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="string", length=10)
      */
     private $phone_number;
 

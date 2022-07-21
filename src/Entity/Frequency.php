@@ -24,7 +24,7 @@ class Frequency
 
     /**
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="frequency")
-     * @ORM\JoinColumn(nullable=false)
+     * 
      */
     private $housekeeping;
 
