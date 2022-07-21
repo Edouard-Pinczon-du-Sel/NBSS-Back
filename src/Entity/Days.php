@@ -24,7 +24,7 @@ class Days
 
     /**
      * @ORM\ManyToOne(targetEntity=BabysittingService::class, inversedBy="days")
-     * @ORM\JoinColumn(nullable=false)
+    
      */
     private $babysittingService;
 

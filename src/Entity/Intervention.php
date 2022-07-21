@@ -24,14 +24,14 @@ class Intervention
 
     /**
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="intervention")
-     * @ORM\JoinColumn(nullable=false)
+ 
      */
    
     private $personalAssistanceService;
 
     /**
      * @ORM\ManyToOne(targetEntity=BabysittingService::class, inversedBy="intervention")
-     * @ORM\JoinColumn(nullable=false)
+ 
      */
     private $babysittingService;
 
