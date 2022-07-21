@@ -1,0 +1,28 @@
+
+nav{
+    height: 4.5rem;
+    padding: 0 7rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:#E36386;
+    margin-bottom: 2rem;
+}
+
+.btn{
+    color: #fff;
+    background-color:#006072;
+    font-size: 1.31rem;
+    font-weight: bold;
+    height: 3.18rem;
+    border:none; 
+    box-shadow: 2px 5px 15px 0px rgba(0, 0, 0,0.3);
+    border-top-left-radius: 800px;
+    border-top-right-radius: 5000px;
+    border-bottom-right-radius: 800px;
+    border-bottom-left-radius: 8000px;
+    transition: all 500ms ease-in-out;
+  }
+  .img{
+    height: 4rem;
+  }
