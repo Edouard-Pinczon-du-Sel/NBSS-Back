@@ -18,13 +18,12 @@ class Frequency
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=20, nullable=true)
+     * @ORM\Column(type="string", length=50, nullable=true)
      */
     private $type;
 
     /**
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="frequency")
-     * 
      */
     private $housekeeping;
 

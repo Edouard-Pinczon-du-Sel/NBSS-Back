@@ -24,7 +24,6 @@ class PersonalAssistance
 
     /**
      * @ORM\ManyToOne(targetEntity=PersonalAssistanceService::class, inversedBy="personalAssistance")
-     * @ORM\JoinColumn(nullable=false)
      */
     private $personalAssistanceService;
 

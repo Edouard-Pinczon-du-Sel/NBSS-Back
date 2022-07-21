@@ -24,14 +24,11 @@ class Intervention
 
     /**
      * @ORM\ManyToOne(targetEntity=Housekeeping::class, inversedBy="intervention")
- 
      */
-   
     private $personalAssistanceService;
 
     /**
      * @ORM\ManyToOne(targetEntity=BabysittingService::class, inversedBy="intervention")
- 
      */
     private $babysittingService;
 
