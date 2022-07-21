@@ -102,6 +102,12 @@ class AdministrativeDepartment
      */
     private $content;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $contact;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -307,6 +313,18 @@ class AdministrativeDepartment
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(Contact $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }

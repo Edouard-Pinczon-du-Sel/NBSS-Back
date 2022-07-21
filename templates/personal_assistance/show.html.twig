@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}PersonalAssistance{% endblock %}
+
+{% block body %}
+    <h1>PersonalAssistance</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ personal_assistance.id }}</td>
+            </tr>
+            <tr>
+                <th>Type</th>
+                <td>{{ personal_assistance.type }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_personal_assistance_index') }}">back to list</a>
+
+    <a href="{{ path('app_personal_assistance_edit', {'id': personal_assistance.id}) }}">edit</a>
+
+    {{ include('personal_assistance/_delete_form.html.twig') }}
+{% endblock %}
