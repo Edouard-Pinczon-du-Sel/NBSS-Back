@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Recruitment index{% endblock %}
+
+{% block body %}
+    <h1>Recruitment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Created_at</th>
+                <th>Visibility</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for recruitment in recruitments %}
+            <tr>
+                <td>{{ recruitment.id }}</td>
+                <td>{{ recruitment.title }}</td>
+                <td>{{ recruitment.content }}</td>
+                <td>{{ recruitment.createdAt ? recruitment.createdAt|date('Y-m-d') : '' }}</td>
+                <td>{{ recruitment.visibility ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">show</a>
+                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="6">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_recruitment_new') }}">Create new</a>
+{% endblock %}

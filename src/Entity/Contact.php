@@ -71,12 +71,6 @@ class Contact
      * @ORM\Column(type="date")
      */
     private $created_at;
-  
-   
-
-   
-
-  
 
     public function getId(): ?int
     {
@@ -213,8 +207,5 @@ class Contact
         $this->created_at = $created_at;
 
         return $this;
-    }
-    
-    
-   
+    } 
 }
