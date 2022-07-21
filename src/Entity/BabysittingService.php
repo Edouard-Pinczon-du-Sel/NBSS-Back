@@ -44,6 +44,12 @@ class BabysittingService
      */
     private $intervention;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $contact;
+
     public function __construct()
     {
         $this->days = new ArrayCollection();
@@ -147,6 +153,18 @@ class BabysittingService
                 $intervention->setBabysittingService(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(Contact $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }

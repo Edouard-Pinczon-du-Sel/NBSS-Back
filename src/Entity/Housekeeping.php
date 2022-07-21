@@ -34,6 +34,12 @@ class Housekeeping
      */
     private $frequency;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, cascade={"persist", "remove"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $contact;
+
     public function __construct()
     {
         $this->intervention = new ArrayCollection();
@@ -95,6 +101,18 @@ class Housekeeping
                 $frequency->setHousekeeping(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(Contact $contact): self
+    {
+        $this->contact = $contact;
 
         return $this;
     }
