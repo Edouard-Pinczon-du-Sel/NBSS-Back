@@ -21,6 +21,7 @@
                 <td>
                     <a href="{{ path('app_frequency_show', {'id': frequency.id}) }}">show</a>
                     <a href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit</a>
+                       {{ include('frequency/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
