@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220722090312 extends AbstractMigration
+final class Version20220722123728 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -34,6 +34,7 @@ final class Version20220722090312 extends AbstractMigration
         $this->addSql('CREATE TABLE personal_assistance_service (id INT AUTO_INCREMENT NOT NULL, financial_help TINYINT(1) NOT NULL, content VARCHAR(250) DEFAULT NULL, organization VARCHAR(250) DEFAULT NULL, number_hour INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE personal_assistance_service_personal_assistance (personal_assistance_service_id INT NOT NULL, personal_assistance_id INT NOT NULL, INDEX IDX_E49F14ADF80D8CE9 (personal_assistance_service_id), INDEX IDX_E49F14ADCE7BF740 (personal_assistance_id), PRIMARY KEY(personal_assistance_service_id, personal_assistance_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE personal_assistance_service_intervention (personal_assistance_service_id INT NOT NULL, intervention_id INT NOT NULL, INDEX IDX_9BB3BD1EF80D8CE9 (personal_assistance_service_id), INDEX IDX_9BB3BD1E8EAE3863 (intervention_id), PRIMARY KEY(personal_assistance_service_id, intervention_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE picture (id INT AUTO_INCREMENT NOT NULL, place_order INT DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE recruitment (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(100) NOT NULL, content LONGTEXT NOT NULL, created_at DATE NOT NULL, visibility TINYINT(1) NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE babysitting_service_days ADD CONSTRAINT FK_12FF5953A2128973 FOREIGN KEY (babysitting_service_id) REFERENCES babysitting_service (id) ON DELETE CASCADE');
@@ -83,6 +84,7 @@ final class Version20220722090312 extends AbstractMigration
         $this->addSql('DROP TABLE personal_assistance_service');
         $this->addSql('DROP TABLE personal_assistance_service_personal_assistance');
         $this->addSql('DROP TABLE personal_assistance_service_intervention');
+        $this->addSql('DROP TABLE picture');
         $this->addSql('DROP TABLE recruitment');
         $this->addSql('DROP TABLE user');
     }
