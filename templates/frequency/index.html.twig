@@ -2,8 +2,8 @@
 
 {% block title %}Frequence{% endblock %}
 
-{% block body %}
-    <h1>listes des frequances</h1>
+{% block content %}
+    <h1>listes des frequences</h1>
 
    <table class=" table ">
         <thead>
@@ -19,7 +19,7 @@
                
                 <td  >{{ frequency.type }}</td>
                 <td class="edition">
-          <a class="btn"  href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit </a>
+          <a class="btn"  href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">Modifier </a>
                        {{ include('frequency/_delete_form.html.twig') }}
                 </td>
             </tr>

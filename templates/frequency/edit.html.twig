@@ -2,10 +2,13 @@
 
 {% block title %}modification de fréquence{% endblock %}
 
-{% block body %}
-    <h1>Modification du type de la fréquence   <a  class='btn' href="{{ path('app_frequency_index') }}">retour</a></h1>
+{% block content %}
+<div class="my-3">
+<a  class='btn' href="{{ path('app_frequency_index') }}">retour</a>
+    <h1 class="my-2">Modification du type de la fréquence   </h1>
 
-    {{ include('frequency/_form.html.twig', {'button_label': 'modifier'}) }}
+    {{ include('frequency/_form.html.twig', {'button_label': 'Modifier'}) }}
+</div>
 
    
 
