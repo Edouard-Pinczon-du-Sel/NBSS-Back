@@ -1,26 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Frequency index{% endblock %}
+{% block title %}Frequence{% endblock %}
 
 {% block body %}
-    <h1>Frequency index</h1>
+    <h1>listes des frequances</h1>
 
-    <table class="table">
+   <table class=" table ">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Type</th>
-                <th>actions</th>
+            
+                <th scope="col">Type</th>
+                <th scope="col">action</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
         {% for frequency in frequencies %}
-            <tr>
-                <td>{{ frequency.id }}</td>
-                <td>{{ frequency.type }}</td>
-                <td>
-                    <a href="{{ path('app_frequency_show', {'id': frequency.id}) }}">show</a>
-                    <a href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit</a>
+            <tr >
+               
+                <td  >{{ frequency.type }}</td>
+                <td class="edition">
+          <a class="btn"  href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit </a>
+                       {{ include('frequency/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -30,6 +30,6 @@
         {% endfor %}
         </tbody>
     </table>
+        <a class="btn" href="{{ path('app_frequency_new') }}">Ajouer</a>
 
-    <a href="{{ path('app_frequency_new') }}">Create new</a>
 {% endblock %}

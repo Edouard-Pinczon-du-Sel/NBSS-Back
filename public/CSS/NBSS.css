@@ -8,13 +8,13 @@ nav{
     background-color:#E36386;
     margin-bottom: 2rem;
 }
-
-.btn{
+.btn-navbar{
     color: #fff;
     background-color:#006072;
     font-size: 1.31rem;
     font-weight: bold;
-    height: 3.18rem;
+    height: 3rem;
+    width: 13rem;
     border:none; 
     box-shadow: 2px 5px 15px 0px rgba(0, 0, 0,0.3);
     border-top-left-radius: 800px;
@@ -24,20 +24,38 @@ nav{
     transition: all 500ms ease-in-out;
   }
 
-.btn-delete{
-  color: #fff;
-  background-color:red;
-  font-size: 1.31rem;
-  font-weight: bold;
-  height: 3.18rem;
-  border:none; 
-  box-shadow: 2px 5px 15px 0px rgba(0, 0, 0,0.3);
-  border-top-left-radius: 800px;
-  border-top-right-radius: 5000px;
-  border-bottom-right-radius: 800px;
-  border-bottom-left-radius: 8000px;
-  transition: all 500ms ease-in-out;
-}
+.btn{
+    color: #fff;
+    background-color:#006072;
+    font-size: 1.31rem;
+    font-weight: bold;
+    height: 2.8rem;
+    width: 6rem;
+    border:none; 
+    box-shadow: 2px 5px 15px 0px rgba(0, 0, 0,0.3);
+    border-top-left-radius: 800px;
+    border-top-right-radius: 5000px;
+    border-bottom-right-radius: 800px;
+    border-bottom-left-radius: 8000px;
+    transition: all 500ms ease-in-out;
+  }
+
+
   .img{
     height: 4rem;
+  }
+  .edition{
+    display: flex; 
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .name{
+   
+    justify-content: center;
+    align-items: center;
+  }
+  .name{
+   
+    justify-content: center;
+    align-items: center;
   }
