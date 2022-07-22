@@ -36,7 +36,7 @@ class FrequencyController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $frequencyRepository->add($frequency, true);
-
+    
             return $this->redirectToRoute('app_frequency_index', [], Response::HTTP_SEE_OTHER);
         }
 
