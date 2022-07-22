@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PersonalAssistance{% endblock %}
+
+{% block body %}
+    <h1>Edit PersonalAssistance</h1>
+
+    {{ include('personal_assistance/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_personal_assistance_index') }}">back to list</a>
+
+    {{ include('personal_assistance/_delete_form.html.twig') }}
+{% endblock %}
