@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\BabysittingServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -31,6 +33,27 @@ class BabysittingService
      * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $content;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="babysittingService", cascade={"persist", "remove"})
+     */
+    private $contact;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Days::class, inversedBy="babysittingServices")
+     */
+    private $days;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="babysittingServices")
+     */
+    private $intervention;
+
+    public function __construct()
+    {
+        $this->days = new ArrayCollection();
+        $this->intervention = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -69,6 +92,76 @@ class BabysittingService
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($contact === null && $this->contact !== null) {
+            $this->contact->setBabysittingService(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($contact !== null && $contact->getBabysittingService() !== $this) {
+            $contact->setBabysittingService($this);
+        }
+
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Days>
+     */
+    public function getDays(): Collection
+    {
+        return $this->days;
+    }
+
+    public function addDay(Days $day): self
+    {
+        if (!$this->days->contains($day)) {
+            $this->days[] = $day;
+        }
+
+        return $this;
+    }
+
+    public function removeDay(Days $day): self
+    {
+        $this->days->removeElement($day);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Intervention>
+     */
+    public function getIntervention(): Collection
+    {
+        return $this->intervention;
+    }
+
+    public function addIntervention(Intervention $intervention): self
+    {
+        if (!$this->intervention->contains($intervention)) {
+            $this->intervention[] = $intervention;
+        }
+
+        return $this;
+    }
+
+    public function removeIntervention(Intervention $intervention): self
+    {
+        $this->intervention->removeElement($intervention);
 
         return $this;
     }

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\PersonalAssistanceServiceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -36,6 +38,27 @@ class PersonalAssistanceService
      * @ORM\Column(type="integer", nullable=true)
      */
     private $number_hour;
+
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="personalAssistanceService", cascade={"persist", "remove"})
+     */
+    private $contact;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=PersonalAssistance::class, inversedBy="personalAssistanceServices")
+     */
+    private $personalAssistance;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="personalAssistanceServices")
+     */
+    private $intervention;
+
+    public function __construct()
+    {
+        $this->personalAssistance = new ArrayCollection();
+        $this->intervention = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -86,6 +109,76 @@ class PersonalAssistanceService
     public function setNumberHour(?int $number_hour): self
     {
         $this->number_hour = $number_hour;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($contact === null && $this->contact !== null) {
+            $this->contact->setPersonalAssistanceService(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($contact !== null && $contact->getPersonalAssistanceService() !== $this) {
+            $contact->setPersonalAssistanceService($this);
+        }
+
+        $this->contact = $contact;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, PersonalAssistance>
+     */
+    public function getPersonalAssistance(): Collection
+    {
+        return $this->personalAssistance;
+    }
+
+    public function addPersonalAssistance(PersonalAssistance $personalAssistance): self
+    {
+        if (!$this->personalAssistance->contains($personalAssistance)) {
+            $this->personalAssistance[] = $personalAssistance;
+        }
+
+        return $this;
+    }
+
+    public function removePersonalAssistance(PersonalAssistance $personalAssistance): self
+    {
+        $this->personalAssistance->removeElement($personalAssistance);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Intervention>
+     */
+    public function getIntervention(): Collection
+    {
+        return $this->intervention;
+    }
+
+    public function addIntervention(Intervention $intervention): self
+    {
+        if (!$this->intervention->contains($intervention)) {
+            $this->intervention[] = $intervention;
+        }
+
+        return $this;
+    }
+
+    public function removeIntervention(Intervention $intervention): self
+    {
+        $this->intervention->removeElement($intervention);
 
         return $this;
     }

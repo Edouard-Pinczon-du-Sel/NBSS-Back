@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Frequancy;
+use App\Entity\Frequency;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Frequancy>
+ * @extends ServiceEntityRepository<Frequency>
  *
- * @method Frequancy|null find($id, $lockMode = null, $lockVersion = null)
- * @method Frequancy|null findOneBy(array $criteria, array $orderBy = null)
- * @method Frequancy[]    findAll()
- * @method Frequancy[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Frequency|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Frequency|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Frequency[]    findAll()
+ * @method Frequency[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class FrequancyRepository extends ServiceEntityRepository
+class FrequencyRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Frequancy::class);
+        parent::__construct($registry, Frequency::class);
     }
 
-    public function add(Frequancy $entity, bool $flush = false): void
+    public function add(Frequency $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class FrequancyRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Frequancy $entity, bool $flush = false): void
+    public function remove(Frequency $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -40,7 +40,7 @@ class FrequancyRepository extends ServiceEntityRepository
     }
 
 //    /**
-//     * @return Frequancy[] Returns an array of Frequancy objects
+//     * @return Frequency[] Returns an array of Frequency objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -54,7 +54,7 @@ class FrequancyRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Frequancy
+//    public function findOneBySomeField($value): ?Frequency
 //    {
 //        return $this->createQueryBuilder('f')
 //            ->andWhere('f.exampleField = :val')

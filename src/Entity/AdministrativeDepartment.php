@@ -102,6 +102,11 @@ class AdministrativeDepartment
      */
     private $content;
 
+    /**
+     * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="administrativeDepartment", cascade={"persist", "remove"})
+     */
+    private $contact;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -307,6 +312,28 @@ class AdministrativeDepartment
     public function setContent(?string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getContact(): ?Contact
+    {
+        return $this->contact;
+    }
+
+    public function setContact(?Contact $contact): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($contact === null && $this->contact !== null) {
+            $this->contact->setAdministrativeDepartment(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($contact !== null && $contact->getAdministrativeDepartment() !== $this) {
+            $contact->setAdministrativeDepartment($this);
+        }
+
+        $this->contact = $contact;
 
         return $this;
     }
