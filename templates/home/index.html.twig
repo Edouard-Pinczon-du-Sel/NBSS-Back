@@ -1,0 +1,19 @@
+{% extends "base.html.twig" %}
+
+{% block title %}NBSS BACKOFFICE{% endblock %}
+
+{% block body %}
+
+    {# dans ce block je pourrais mettre une entête ou pas #}
+    {% block header %}
+        <div class="my-5 py-5 text-center">
+        <img src="{{ asset('NBSS-logo.png') }}" height="200" alt="Logo NBSS" class="mb-3">
+        <h1 class="display-6 fw-bold">Bienvenue dans le BackOffice</h1>
+        <div class="col-lg-6 mx-auto">
+            <p class="lead mb-4 text-muted">NB Services et Soins</p>
+        </div>
+    </div>
+    {% endblock %}
+
+
+{% endblock %}
