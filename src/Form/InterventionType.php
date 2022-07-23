@@ -13,8 +13,7 @@ class InterventionType extends AbstractType
     {
         $builder
             ->add('moment')
-            ->add('babysittingServices')
-            ->add('personalAssistanceServices')
+         
         ;
     }
 

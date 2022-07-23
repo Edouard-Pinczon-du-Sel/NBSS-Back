@@ -1,26 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Intervention index{% endblock %}
+{% block title %} Moment d'intervention{% endblock %}
 
-{% block body %}
-    <h1>Intervention index</h1>
+{% block content %}
+    <h1>Moment d'intervention</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Moment</th>
-                <th>actions</th>
+               
+                <th scope="col">Type</th>
+                <th scope="col">action</th>
             </tr>
         </thead>
         <tbody>
         {% for intervention in interventions %}
             <tr>
-                <td>{{ intervention.id }}</td>
+                
                 <td>{{ intervention.moment }}</td>
-                <td>
-                    <a href="{{ path('app_intervention_show', {'id': intervention.id}) }}">show</a>
-                    <a href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">edit</a>
+                <td class="edition">
+                    
+                    <a class="btn" href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">Modifier</a>
+                      {{ include('intervention/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -31,5 +32,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_intervention_new') }}">Create new</a>
+    <a class="btn" href="{{ path('app_intervention_new') }}">Ajouter</a>
 {% endblock %}
