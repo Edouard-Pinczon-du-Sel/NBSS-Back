@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\ContactRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=ContactRepository::class)
  */
@@ -19,26 +22,31 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank
      */
     private $maiden_name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $adress;
 
@@ -49,6 +57,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $city;
 
@@ -59,6 +68,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $content;
 

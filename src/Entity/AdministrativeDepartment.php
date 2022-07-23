@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\AdministrativeDepartmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=AdministrativeDepartmentRepository::class)
  */
@@ -19,21 +22,25 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $firstname_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $lastname_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank
      */
     private $maiden_name_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $adress_deceased;
 
@@ -44,6 +51,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank
      */
     private $city_of_deceased;
 
@@ -54,6 +62,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $place_of_birth;
 
@@ -64,26 +73,31 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank
      */
     private $place_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $adress;
 
@@ -94,11 +108,13 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank
      */
     private $content;
 

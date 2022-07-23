@@ -5,6 +5,9 @@ namespace App\Entity;
 use App\Repository\RecruitmentRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Groups;
+
 /**
  * @ORM\Entity(repositoryClass=RecruitmentRepository::class)
  */
@@ -19,16 +22,19 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank
      */
     private $content;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank
      */
     private $created_at;
 
