@@ -6,12 +6,10 @@
 <div class="container-xl bg-light p-5 border-top">
     <h1>Contact : {{ contact.firstname }} {{ contact.lastname }}</h1>
 
+<a type="button" href="{{ path('app_contact_index') }}"><span class="badge bg-info fs-6 mx-2 my-2"> Retour à la liste </span></a>
+
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ contact.id }}</td>
-            </tr>
             <tr>
                 <th>Firstname</th>
                 <td>{{ contact.firstname }}</td>
@@ -131,6 +129,7 @@
     <h1>Service : Ménager</h1>
         <table class="table">
             <tbody>
+                <tr>
                     <th>Nombre d'heure de menage</th>
                     <td>{{housekeepingService.numberHour}}</td>
                 </tr>
@@ -148,11 +147,86 @@
         </table>
     {% endif %}
 
+    {% if administrativeDepartmentService == true %}
+    <h1>Service : Administratif décès</h1>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Prénom de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.firstnameOfDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Nom de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.lastNameOfDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Nom de jeune fille de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.maidenNameOfDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Adresse de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.adressDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Code postal de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.zipCodeOfDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Ville de la personne décédée</th>
+                    <td>{{administrativeDepartmentService.cityOfDeceased}}</td>
+                </tr>
+                <tr>
+                    <th>Année de naissance</th>
+                    <td>{{administrativeDepartmentService.dateOfBirth|date("m/d/Y", "Europe/Paris")}}</td>
+                </tr>
+                <tr>
+                    <th>Lieu de naissance</th>
+                    <td>{{administrativeDepartmentService.placeOfBirth}}</td>
+                </tr>
+                <tr>
+                    <th>Dâte du décès</th>
+                    <td>{{administrativeDepartmentService.dateOfDeceased|date("m/d/Y", "Europe/Paris")}}</td>
+                </tr>
+                <tr>
+                    <th>Lieu de décès</th>
+                    <td>{{administrativeDepartmentService.placeOfDeceased}}</td>
+                </tr>
+            </tbody>
+        </table>
+    <h2>Personne en charge du décès</h2>
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{administrativeDepartmentService.firstname}}</td>
+                </tr>
+                <tr>
+                    <th>Nom</th>
+                    <td>{{administrativeDepartmentService.lastname}}</td>
+                </tr>
+                <tr>
+                    <th>Adresse</th>
+                    <td>{{administrativeDepartmentService.adress}}</td>
+                </tr>
+                <tr>
+                    <th>Code postal</th>
+                    <td>{{administrativeDepartmentService.postalCode}}</td>
+                </tr>
+                <tr>
+                    <th>Ville</th>
+                    <td>{{administrativeDepartmentService.city}}</td>
+                </tr>
+                <tr>
+                    <th>Info suplémentaire</th>
+                    <td>{{administrativeDepartmentService.content}}</td>
+                </tr>
+            </tbody>
+        </table>
+    {% endif %}
 
-    <a href="{{ path('app_contact_index') }}">back to list</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('contact/_delete_form.html.twig') }}
+    {% endif %}
 
-    <a href="{{ path('app_contact_edit', {'id': contact.id}) }}">edit</a>
-
-    {{ include('contact/_delete_form.html.twig') }}
 </div>
 {% endblock %}

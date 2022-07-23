@@ -61,12 +61,14 @@ class ContactController extends AbstractController
         $babysittingService = $contact->getBabysittingService();
         $personalAssistanceService = $contact->getPersonalAssistanceService();
         $housekeepingService = $contact->getHousekeeping();
-        //dd($personalAssistanceService);
+        $administrativeDepartmentService = $contact->getAdministrativeDepartment();
+        //dd($administrativeDepartmentService);
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
             'babysittingService' => $babysittingService,
             'personalAssistanceService' => $personalAssistanceService,
-            'housekeepingService' => $housekeepingService
+            'housekeepingService' => $housekeepingService,
+            'administrativeDepartmentService' => $administrativeDepartmentService
         ]);
     }
 
