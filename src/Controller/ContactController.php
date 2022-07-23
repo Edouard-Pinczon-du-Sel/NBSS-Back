@@ -2,9 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\BabysittingService;
 use App\Entity\Contact;
+use App\Entity\Housekeeping;
+use App\Entity\PersonalAssistanceService;
 use App\Form\ContactType;
+use App\Repository\AdministrativeDepartmentRepository;
+use App\Repository\BabysittingServiceRepository;
 use App\Repository\ContactRepository;
+use App\Repository\HousekeepingRepository;
+use App\Repository\PersonalAssistanceServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -50,9 +57,16 @@ class ContactController extends AbstractController
      * @Route("/{id}", name="app_contact_show", methods={"GET"})
      */
     public function show(Contact $contact): Response
-    {
+    {   
+        $babysittingService = $contact->getBabysittingService();
+        $personalAssistanceService = $contact->getPersonalAssistanceService();
+        $housekeepingService = $contact->getHousekeeping();
+        //dd($personalAssistanceService);
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
+            'babysittingService' => $babysittingService,
+            'personalAssistanceService' => $personalAssistanceService,
+            'housekeepingService' => $housekeepingService
         ]);
     }
 
