@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\back;
 
 use App\Entity\Frequency;
 use App\Form\FrequencyType;

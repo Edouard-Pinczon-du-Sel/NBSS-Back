@@ -22,10 +22,10 @@ class RecruitmentType extends AbstractType
             ->add('content', TextareaType::class, [
                 'label' => 'Contenu'
             ])
-            ->add('created_at', DateTimeType::class, [
+            ->add('published_on', DateTimeType::class, [
                 'label' => 'Annonce publié le...',
                 'widget' => 'single_text',
-                'input' => 'datetime_immutable',
+                'input' => 'datetime',
             ])
             ->add('visibility', ChoiceType::class, [
                 'label' => 'Visibilitée de l\'annonce',

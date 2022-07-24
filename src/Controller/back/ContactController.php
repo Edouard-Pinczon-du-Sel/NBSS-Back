@@ -1,17 +1,10 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\back;
 
-use App\Entity\BabysittingService;
 use App\Entity\Contact;
-use App\Entity\Housekeeping;
-use App\Entity\PersonalAssistanceService;
 use App\Form\ContactType;
-use App\Repository\AdministrativeDepartmentRepository;
-use App\Repository\BabysittingServiceRepository;
 use App\Repository\ContactRepository;
-use App\Repository\HousekeepingRepository;
-use App\Repository\PersonalAssistanceServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;

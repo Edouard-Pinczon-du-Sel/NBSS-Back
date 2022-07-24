@@ -11,6 +11,17 @@ security:
                 class: App\Entity\User
                 property: email
     firewalls:
+        login:
+            pattern: ^/api/login
+            stateless: true
+            json_login:
+                check_path: /api/login_check
+                success_handler: lexik_jwt_authentication.handler.authentication_success
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure                
+        api:
+            pattern:   ^/api
+            stateless: true
+            jwt: ~
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
@@ -33,21 +44,17 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # l'ordre des ces deux ACL est important
-        # - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         
         # Back : Sécuriser toutes les routes /add /edit /delete avec ROLE_ADMIN.
-        # - { path: /back, roles: [ROLE_ADMIN] }
-        # - { path: /back/(.*)/(new|edit), roles: [ROLE_ADMIN] }
-        # - { path: ^/back/(.*)/\d+$, roles: [ROLE_ADMIN] , methods: [POST]}
+        - { path: /back, roles: [ROLE_ADMIN] }
+        - { path: /back/(.*)/(new|edit), roles: [ROLE_ADMIN] }
+        - { path: ^/back/(.*)/\d+$, roles: [ROLE_ADMIN] , methods: [POST]}
 
         # Back : Si ROLE_MANAGER : accès aux pages blog (version 2.0).
         # - { path: /back/blog/(new|edit), roles: [ROLE_MANAGER] }
         # - { path: ^/back/blog/\d+$, roles: [ROLE_MANAGER] , methods: [POST]}
-
-        # Front : Si user ANONYME : page d'accueil + fiche film seulement.
-        # à partie d'ici si la route n'a pas été gérée par les règles précédentes
-        # pas de restriction de droits, openbar
        
     role_hierarchy:
         # ADMIN ait les mêmes droits que MANAGER        
