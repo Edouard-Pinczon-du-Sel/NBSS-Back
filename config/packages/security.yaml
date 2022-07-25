@@ -52,6 +52,12 @@ security:
         - { path: /back/(.*)/(new|edit), roles: [ROLE_ADMIN] }
         - { path: ^/back/(.*)/\d+$, roles: [ROLE_ADMIN] , methods: [POST]}
 
+        # Back : Sécuriser toutes les routes.
+        - { path: ^/$, roles: [ROLE_MANAGER] }
+
+        # Back : Seul route publique
+        - { path: ^/login$, roles: PUBLIC_ACCESS }
+
         # Back : Si ROLE_MANAGER : accès aux pages blog (version 2.0).
         # - { path: /back/blog/(new|edit), roles: [ROLE_MANAGER] }
         # - { path: ^/back/blog/\d+$, roles: [ROLE_MANAGER] , methods: [POST]}

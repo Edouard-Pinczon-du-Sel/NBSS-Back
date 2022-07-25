@@ -41,22 +41,24 @@ nav{
 
   }
 
-
   .img{
     height: 5rem;
   }
+
   .edition{
     display: flex; 
     justify-content: flex-start;
     align-items: center;
   }
+
   .name{
    
     justify-content: center;
     align-items: center;
   }
-  .name{
-   
-    justify-content: center;
-    align-items: center;
-  }
+
+  .imgage {
+    width: 200px; 
+    height: 200px;
+    object-fit: cover;
+}
