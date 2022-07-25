@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220725083507 extends AbstractMigration
+final class Version20220725162246 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -35,7 +35,7 @@ final class Version20220725083507 extends AbstractMigration
         $this->addSql('CREATE TABLE personal_assistance_service_personal_assistance (personal_assistance_service_id INT NOT NULL, personal_assistance_id INT NOT NULL, INDEX IDX_E49F14ADF80D8CE9 (personal_assistance_service_id), INDEX IDX_E49F14ADCE7BF740 (personal_assistance_id), PRIMARY KEY(personal_assistance_service_id, personal_assistance_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE personal_assistance_service_intervention (personal_assistance_service_id INT NOT NULL, intervention_id INT NOT NULL, INDEX IDX_9BB3BD1EF80D8CE9 (personal_assistance_service_id), INDEX IDX_9BB3BD1E8EAE3863 (intervention_id), PRIMARY KEY(personal_assistance_service_id, intervention_id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE picture (id INT AUTO_INCREMENT NOT NULL, place_order INT DEFAULT NULL, updated_at DATETIME NOT NULL, image_name VARCHAR(255) DEFAULT NULL, image_original_name VARCHAR(255) DEFAULT NULL, image_mime_type VARCHAR(255) DEFAULT NULL, image_size INT DEFAULT NULL, image_dimensions LONGTEXT DEFAULT NULL COMMENT \'(DC2Type:simple_array)\', PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
-        $this->addSql('CREATE TABLE recruitment (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(100) NOT NULL, content LONGTEXT NOT NULL, visibility TINYINT(1) NOT NULL, published_on DATE DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('CREATE TABLE recruitment (id INT AUTO_INCREMENT NOT NULL, title VARCHAR(100) NOT NULL, visibility TINYINT(1) NOT NULL, published_on DATE DEFAULT NULL, title_description VARCHAR(255) NOT NULL, description LONGTEXT NOT NULL, title_description2 VARCHAR(255) DEFAULT NULL, description2 LONGTEXT DEFAULT NULL, title_description3 VARCHAR(255) DEFAULT NULL, description3 LONGTEXT DEFAULT NULL, we_search LONGTEXT NOT NULL, avantage VARCHAR(255) DEFAULT NULL, licence_requeried VARCHAR(255) DEFAULT NULL, experience_requeried VARCHAR(255) DEFAULT NULL, drive_license TINYINT(1) NOT NULL, type_contrat VARCHAR(50) NOT NULL, salary VARCHAR(255) DEFAULT NULL, deplacement_info VARCHAR(255) DEFAULT NULL, day_off VARCHAR(100) DEFAULT NULL, opportunity VARCHAR(255) DEFAULT NULL, working_hour VARCHAR(100) DEFAULT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('CREATE TABLE user (id INT AUTO_INCREMENT NOT NULL, email VARCHAR(180) NOT NULL, roles LONGTEXT NOT NULL COMMENT \'(DC2Type:json)\', password VARCHAR(255) NOT NULL, UNIQUE INDEX UNIQ_8D93D649E7927C74 (email), PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
         $this->addSql('ALTER TABLE babysitting_service_days ADD CONSTRAINT FK_12FF5953A2128973 FOREIGN KEY (babysitting_service_id) REFERENCES babysitting_service (id) ON DELETE CASCADE');
         $this->addSql('ALTER TABLE babysitting_service_days ADD CONSTRAINT FK_12FF59533575FA99 FOREIGN KEY (days_id) REFERENCES days (id) ON DELETE CASCADE');
