@@ -13,7 +13,7 @@ class PersonalAssistanceType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('personalAssistanceServices')
+      
         ;
     }
 

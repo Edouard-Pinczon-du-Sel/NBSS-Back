@@ -13,7 +13,7 @@ class FrequencyType extends AbstractType
     {
         $builder
             ->add('type')
-            ->add('housekeepings')
+           
         ;
     }
 

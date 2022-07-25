@@ -1,11 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Frequency{% endblock %}
+{% block title %}Nouvelle fréquence  {% endblock %}
 
-{% block body %}
-    <h1>Create new Frequency</h1>
+{% block content %}
+<div class="my-3">
+<a  class='btn' href="{{ path('app_frequency_index') }}">Retour</a>
+    <h1>Créer une nouvelle fréquance </h1>
 
     {{ include('frequency/_form.html.twig') }}
-
-    <a href="{{ path('app_frequency_index') }}">back to list</a>
+    </div>
 {% endblock %}

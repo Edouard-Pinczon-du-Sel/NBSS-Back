@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New PersonalAssistance{% endblock %}
+{% block title %} Ajouter un nouveau type d'aide{% endblock %}
 
-{% block body %}
-    <h1>Create new PersonalAssistance</h1>
+{% block content %}
+    <a class="btn" href="{{ path('app_personal_assistance_index') }}">Retour</a>
+    <h1>Ajouter un nouveau type d'aide</h1>
 
     {{ include('personal_assistance/_form.html.twig') }}
 
-    <a href="{{ path('app_personal_assistance_index') }}">back to list</a>
 {% endblock %}
