@@ -21,33 +21,33 @@ class Picture
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_picture_browse")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("app_api_picture_browse")
      */
     private $placeOrder;
 
     /**
      * NOTE: This is not a mapped field of entity metadata, just a simple property.
-     * 
      * @Vich\UploadableField(mapping="carrousel_images", fileNameProperty="image.name", size="image.size", mimeType="image.mimeType", originalName="image.originalName", dimensions="image.dimensions")
-     * 
      * @var File|null
      */
     private $imageFile;
 
     /**
      * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
-     *
+     * @Groups("app_api_picture_browse")
      * @var EmbeddedFile
      */
     private $image;
 
     /**
      * @ORM\Column(type="datetime")
-     *
+     * @Groups("app_api_picture_browse")
      * @var \DateTimeInterface|null
      */
     private $updatedAt;

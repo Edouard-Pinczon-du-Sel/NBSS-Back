@@ -17,109 +17,128 @@ class AdministrativeDepartment
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $firstname_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $lastname_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $maiden_name_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $adress_deceased;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $zip_code_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $city_of_deceased;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $date_of_birth;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $place_of_birth;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $date_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $place_of_deceased;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $postal_code;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $content;
 
     /**
      * @ORM\OneToOne(targetEntity=Contact::class, mappedBy="administrativeDepartment", cascade={"persist", "remove"})
+     * @Groups("app_api_serviceAdministrativeDepartment")
      */
     private $contact;
 

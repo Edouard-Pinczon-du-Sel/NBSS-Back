@@ -20,6 +20,8 @@ class PictureController extends AbstractController
      */
     public function index(PictureRepository $pictureRepository): Response
     {
+        $toto = $pictureRepository->findAll();
+        dd($toto);
         return $this->render('picture/index.html.twig', [
             'pictures' => $pictureRepository->findAll(),
         ]);
