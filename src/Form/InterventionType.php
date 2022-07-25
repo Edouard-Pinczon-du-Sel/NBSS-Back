@@ -12,8 +12,9 @@ class InterventionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('moment')
-         
+            -->add('moment', TextType::class, [
+                'label' => "Moment d'intervention journalié",
+            ])
         ;
     }
 
