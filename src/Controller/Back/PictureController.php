@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Back;
 
 use App\Entity\Picture;
 use App\Form\PictureType;
@@ -21,6 +21,16 @@ class PictureController extends AbstractController
     public function index(PictureRepository $pictureRepository): Response
     {
         return $this->render('picture/index.html.twig', [
+            'pictures' => $pictureRepository->findAll(),
+        ]);
+    }
+
+    /**
+     * @Route("/homeOrder", name="app_picture_home-order", methods={"GET"})
+     */
+    public function homeOrder(PictureRepository $pictureRepository): Response
+    {
+        return $this->render('home-order/home-order.html.twig', [
             'pictures' => $pictureRepository->findAll(),
         ]);
     }

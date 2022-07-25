@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Back;
 
 use App\Entity\Contact;
 use App\Form\ContactType;
@@ -50,9 +50,18 @@ class ContactController extends AbstractController
      * @Route("/{id}", name="app_contact_show", methods={"GET"})
      */
     public function show(Contact $contact): Response
-    {
+    {   
+        $babysittingService = $contact->getBabysittingService();
+        $personalAssistanceService = $contact->getPersonalAssistanceService();
+        $housekeepingService = $contact->getHousekeeping();
+        $administrativeDepartmentService = $contact->getAdministrativeDepartment();
+        //dd($administrativeDepartmentService);
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
+            'babysittingService' => $babysittingService,
+            'personalAssistanceService' => $personalAssistanceService,
+            'housekeepingService' => $housekeepingService,
+            'administrativeDepartmentService' => $administrativeDepartmentService
         ]);
     }
 
