@@ -23,6 +23,22 @@ nav{
     border-bottom-left-radius: 8000px;
     transition: all 500ms ease-in-out;
   }
+  .btn-deco{
+    color: #fff;
+    background-color:#006072;
+    font-size: 1.31rem;
+    font-weight: bold;
+    height: 2.8rem;
+    width: 8rem;
+    margin: 0.5rem;
+    box-shadow: 2px 5px 15px 0px rgba(0, 0, 0,0.3);
+    border-top-left-radius: 800px;
+    border-top-right-radius: 5000px;
+    border-bottom-right-radius: 800px;
+    border-bottom-left-radius: 8000px;
+    transition: all 500ms ease-in-out;
+  }
+
 
 .btn{
     color: #fff;

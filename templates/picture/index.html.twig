@@ -5,13 +5,13 @@
 {% block body %}
 <div class="container-xl bg-secondary bg-gradient p-5 border-top text-white">
     <h1>Picture index</h1>
-    <a href="{{ path('app_picture_new') }}">Create new</a>
+    <a class="btn" href="{{ path('app_picture_new') }}">Ajouter</a>
     <table class="table text-white">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>PlaceOrder</th>
-                <th>Name</th>
+                
+                <th>Place dans le carroussel</th>
+                <th>Nom</th>
                 <th>Poster</th>
                 <th>actions</th>
             </tr>
@@ -19,7 +19,7 @@
         <tbody>
         {% for picture in pictures %}
             <tr>
-                <td>{{ picture.id }}</td>
+               
                 <td>{{ picture.placeOrder }}</td>
                 <td>{{ picture.image.originalName}}</td>
                 <td><img class="border img-thumbnail img-fluid imgage" src="/images/carrousel/{{ asset(picture.image.name) }}" /></td>
@@ -30,7 +30,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">pas d'image trouvé</td>
             </tr>
         {% endfor %}
         </tbody>

@@ -8,25 +8,25 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Content</th>
-                <th>Published_On</th>
-                <th>Visibility</th>
+             
+                <th>Titre</th>
+               
+                <th>Publier le </th>
+               
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for recruitment in recruitments %}
             <tr>
-                <td>{{ recruitment.id }}</td>
+                
                 <td>{{ recruitment.title }}</td>
-                <td>{{ recruitment.content }}</td>
+                
                 <td>{{ recruitment.publishedOn ? recruitment.publishedOn|date('Y-m-d') : '' }}</td>
                 <td>{{ recruitment.visibility ? 'Yes' : 'No' }}</td>
                 <td>
-                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">show</a>
-                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">edit</a>
+                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">Voir</a>
+                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">Modifier</a>
                 </td>
             </tr>
         {% else %}

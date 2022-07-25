@@ -3,9 +3,9 @@
 {% block title %}New Picture{% endblock %}
 
 {% block body %}
+    <a  class="btn" href="{{ path('app_picture_index') }}">Retour</a>
     <h1>Create new Picture</h1>
 
     {{ include('picture/_form.html.twig') }}
 
-    <a href="{{ path('app_picture_index') }}">back to list</a>
 {% endblock %}
