@@ -24,9 +24,10 @@
                 
                 <td>{{ recruitment.publishedOn ? recruitment.publishedOn|date('Y-m-d') : '' }}</td>
                 <td>{{ recruitment.visibility ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">Voir</a>
-                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">Modifier</a>
+                <td class='edition' >
+                    <a class='btn' href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">Voir</a>
+                    <a  class='btn' href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">Modifier</a>
+                     {{ include('recruitment/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_recruitment_new') }}">Create new</a>
+    <a class='btn'  href="{{ path('app_recruitment_new') }}">Ajouter</a>
 {% endblock %}
