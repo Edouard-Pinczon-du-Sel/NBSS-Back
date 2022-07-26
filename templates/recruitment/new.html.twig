@@ -3,9 +3,9 @@
 {% block title %}New Recruitment{% endblock %}
 
 {% block body %}
-    <h1>Create new Recruitment</h1>
+    <a class='btn' href="{{ path('app_recruitment_index') }}">retour</a>
+    <h1>Créer une nouvelle annonce</h1>
 
     {{ include('recruitment/_form.html.twig') }}
 
-    <a href="{{ path('app_recruitment_index') }}">back to list</a>
 {% endblock %}
