@@ -17,88 +17,124 @@ class Contact
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $firstname;
 
     /**
      * @ORM\Column(type="string", length=50)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $lastname;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $maiden_name;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $mail;
 
     /**
      * @ORM\Column(type="string", length=255)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $adress;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $zip_code;
 
     /**
      * @ORM\Column(type="string", length=100)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $city;
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $phone_number;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      * @Assert\NotBlank
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $content;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $preferency;
 
     /**
      * @ORM\Column(type="date")
+     * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
+     * @Groups("app_api_contact")
      */
     private $created_at;
 
     /**
-     * @ORM\OneToOne(targetEntity=AdministrativeDepartment::class, inversedBy="contact", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=AdministrativeDepartment::class, inversedBy="contact", cascade={"persist", "remove"}, orphanRemoval=true)
+     * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
     private $administrativeDepartment;
 
     /**
-     * @ORM\OneToOne(targetEntity=BabysittingService::class, inversedBy="contact", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=BabysittingService::class, inversedBy="contact", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $babysittingService;
 
     /**
-     * @ORM\OneToOne(targetEntity=Housekeeping::class, inversedBy="contact", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=Housekeeping::class, inversedBy="contact", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $housekeeping;
 
     /**
-     * @ORM\OneToOne(targetEntity=PersonalAssistanceService::class, inversedBy="contact", cascade={"persist", "remove"})
+     * @ORM\OneToOne(targetEntity=PersonalAssistanceService::class, inversedBy="contact", cascade={"persist", "remove"}, orphanRemoval=true)
      */
     private $personalAssistanceService;
 

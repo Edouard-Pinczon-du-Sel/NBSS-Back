@@ -33,12 +33,11 @@ class PictureController extends ApiController
     #id: 2
     #placeOrder: 1
     #imageFile: null
-    #image: Vich\UploaderBundle\Entity\File {#961 ▼
-      #name: "picture-62de8af05b49d651698190.jpg"
-      #originalName: "picture.jpg"
-      #mimeType: "image/jpeg"
-      #size: 501883
-      #dimensions: array:2 [▶]
-    #updatedAt: DateTime @1658751728 {#955 ▼
-      #date: 2022-07-25 14:22:08.0 Europe/Berlin (+02:00)      
+    #image:
+      #name:
+      #originalName:
+      #mimeType:
+      #size:
+      #dimensions:
+    #updatedAt:  
 }

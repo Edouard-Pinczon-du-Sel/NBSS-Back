@@ -2,8 +2,8 @@
 
 namespace App\Controller\Api;
 
-use App\Entity\AdministrativeDepartment;
-use App\Repository\AdministrativeDepartmentRepository;
+use App\Entity\Contact;
+use App\Repository\ContactRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Exception;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,23 +14,23 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @Route("/api/administrative/department", name="app_api_administrative_department")
+ * @Route("/api/contact", name="app_api_contact")
  */
-class AdministrativeDepartmentController extends ApiController
+class ContactController extends ApiController
 {
     /**
      * @Route("/", name="browse", methods={"GET"})
      */
-    public function browse(AdministrativeDepartmentRepository $administrativeDepartmentRepository): JsonResponse
+    public function browse(ContactRepository $contactRepository): JsonResponse
     {
-        $servicesAdministrativeDepartment = $administrativeDepartmentRepository->findAll();
+        $contacts = $contactRepository->findAll();
 
         return $this->json(
-            $servicesAdministrativeDepartment,
+            $contacts,
             Response::HTTP_OK,
             [],
             ["groups" =>[
-                "app_api_serviceAdministrativeDepartment"
+                "app_api_contact"
             ]]
         );
     }
@@ -38,18 +38,18 @@ class AdministrativeDepartmentController extends ApiController
     /**
      * @Route("/{id}", name="read", methods={"GET"})
      */
-    public function read(AdministrativeDepartment $administrativeDepartment = null): JsonResponse
+    public function read(Contact $contact = null): JsonResponse
     {
-        if($administrativeDepartment === null)
+        if($contact === null)
         {
             return $this->json404("le service n'a pas été trouvé");
         }
         return $this->json(
-            $administrativeDepartment,
+            $contact,
             Response::HTTP_OK,
             [],
             ["groups" =>[
-                "app_api_serviceAdministrativeDepartment"
+                "app_api_contact_serviceAdministrativeDepartment"
             ]]
         );
     }
@@ -71,72 +71,38 @@ class AdministrativeDepartmentController extends ApiController
         }
 
         $jsonContent = $request->getContent();
-
+        dd($jsonContent);    
         try
         {
-            $newAdministrativeDepartment = $serializerInterface->deserialize($jsonContent, Movie::class, 'json');    
+            $newContact = $serializerInterface->deserialize($jsonContent, Contact::class, 'json');
         }
         catch(Exception $e)
         {
             return $this->json("Le JSON est mal formé", Response::HTTP_BAD_REQUEST);
         }
 
-        $errors = $validator->validate($newAdministrativeDepartment);
+        $errors = $validator->validate($newContact);
         
         if (count($errors)> 0)
         {
             return $this->json422($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
+        //$contactRepository->add($newContact, true);
+        
         $em = $manager->getManager();
-        $em->persist($newAdministrativeDepartment);
+        $em->persist($newContact);
         $em->flush();
-
+        
         return $this->json(
-            $newAdministrativeDepartment,
+            $newContact,
             Response::HTTP_CREATED,
             [
-                'Location' => $this->generateUrl('app_api_administrative_department_read', ['id' => $newAdministrativeDepartment->getId()])
+                'Location' => $this->generateUrl('app_api_contact_read', ['id' => $newContact->getId()])
             ],
             [
-                "groups" => "app_api_serviceAdministrativeDepartment"
+                "groups" => "app_api_contact_serviceAdministrativeDepartment"
             ]
         );
     }
-
-  #id
-  #firstname_of_deceased:
-  #lastname_of_deceased:
-  #maiden_name_of_deceased:
-  #adress_deceased:
-  #zip_code_of_deceased:
-  #city_of_deceased:
-  #date_of_birth:
-  #place_of_birth:
-  #date_of_deceased:
-  #place_of_deceased:
-  #firstname:
-  #lastname:
-  #mail:
-  #adress:
-  #postal_code:
-  #city:
-  #content:
-  #contact:
-    #id:
-    #firstname:
-    #lastname:
-    #maiden_name:
-    #mail:
-    #adress:
-    #zip_code:
-    #city:
-    #phone_number:
-    #content:
-    #preferency:
-    #created_at:
-    #administrativeDepartment:
-    #babysittingService: null
-    #housekeeping: null
-    #personalAssistanceService: null
 }
