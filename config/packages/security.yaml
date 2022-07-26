@@ -17,7 +17,8 @@ security:
             json_login:
                 check_path: /api/login_check
                 success_handler: lexik_jwt_authentication.handler.authentication_success
-                failure_handler: lexik_jwt_authentication.handler.authentication_failure                
+                failure_handler: lexik_jwt_authentication.handler.authentication_failure
+                                
         api:
             pattern:   ^/api
             stateless: true
@@ -50,7 +51,7 @@ security:
         # Back : Sécuriser toutes les routes /add /edit /delete avec ROLE_ADMIN.
         - { path: /back, roles: [ROLE_ADMIN] }
         - { path: /back/(.*)/(new|edit), roles: [ROLE_ADMIN] }
-        - { path: ^/back/(.*)/\d+$, roles: [ROLE_ADMIN] , methods: [POST]}
+        - { path: ^/back/(.*)/\d+$, roles: [ROLE_ADMIN] , methods: [POST] }
 
         # Back : Sécuriser toutes les routes.
         - { path: ^/$, roles: [ROLE_MANAGER] }

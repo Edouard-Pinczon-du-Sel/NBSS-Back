@@ -24,12 +24,13 @@ class Housekeeping
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("app_api_contact_housekeeping")
      */
     private $number_hour;
 
     /**
      * @ORM\Column(type="string", length=250)
-     * @Assert\NotBlank
+     * @Groups("app_api_contact_housekeeping")
      */
     private $content;
 
@@ -39,7 +40,8 @@ class Housekeeping
     private $contact;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Frequency::class, inversedBy="housekeepings")
+     * @ORM\ManyToMany(targetEntity=Frequency::class, inversedBy="housekeepings", cascade={"persist", "remove"})
+     * @Groups("app_api_contact_housekeeping")
      */
     private $frequency;
 

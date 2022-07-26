@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 /**
- * @Route("/api/contact", name="app_api_contact")
+ * @Route("/api/contact", name="app_api_contact_")
  */
 class ContactController extends ApiController
 {
@@ -40,18 +40,62 @@ class ContactController extends ApiController
      */
     public function read(Contact $contact = null): JsonResponse
     {
-        if($contact === null)
-        {
+        if ($contact === null) {
             return $this->json404("le service n'a pas été trouvé");
         }
-        return $this->json(
-            $contact,
-            Response::HTTP_OK,
-            [],
-            ["groups" =>[
-                "app_api_contact_serviceAdministrativeDepartment"
-            ]]
-        );
+
+        if ($contact->getAdministrativeDepartment() !== null) {
+            return $this->json(
+                $contact,
+                Response::HTTP_OK,
+                [],
+                ["groups" =>[
+                    "app_api_contact_serviceAdministrativeDepartment"
+                ]]
+            );
+        }
+
+        if ($contact->getBabysittingService() !== null) {
+            return $this->json(
+                $contact,
+                Response::HTTP_OK,
+                [],
+                ["groups" =>[
+                    "app_api_contact_babysittingService"
+                ]]
+            );
+        }
+
+        if ($contact->getHousekeeping() !== null) {
+            return $this->json(
+                $contact,
+                Response::HTTP_OK,
+                [],
+                ["groups" =>[
+                    "app_api_contact_housekeeping"
+                ]]
+            );
+        }
+
+        if ($contact->getPersonalAssistanceService() !== null) {
+            return $this->json(
+                $contact,
+                Response::HTTP_OK,
+                [],
+                ["groups" =>[
+                    "app_api_contact_personalAssistanceService"
+                ]]
+            );
+        } else {
+            return $this->json(
+                $contact,
+                Response::HTTP_OK,
+                [],
+                ["groups" =>[
+                    "app_api_contact"
+                ]]
+            );
+        }
     }
 
     /**
@@ -65,44 +109,169 @@ class ContactController extends ApiController
      */
     public function add(Request $request, ManagerRegistry $manager, SerializerInterface $serializerInterface, ValidatorInterface $validator): JsonResponse
     {
-        if (!$this->isGranted("ROLE_ADMIN"))
-        {
+        if (!$this->isGranted("ROLE_MANAGER")) {
             return $this->json(["error"=>"Authorised user only"], Response::HTTP_FORBIDDEN);
         }
 
         $jsonContent = $request->getContent();
-        dd($jsonContent);    
-        try
-        {
-            $newContact = $serializerInterface->deserialize($jsonContent, Contact::class, 'json');
-        }
-        catch(Exception $e)
-        {
-            return $this->json("Le JSON est mal formé", Response::HTTP_BAD_REQUEST);
+
+        try {
+            $new = $serializerInterface->deserialize($jsonContent, Contact::class, "json");
+        } catch (Exception $e) {
+            return $this->json($e->getMessage(), Response::HTTP_BAD_REQUEST);
         }
 
-        $errors = $validator->validate($newContact);
+        $errors = $validator->validate($new);
         
-        if (count($errors)> 0)
-        {
+        if (count($errors)> 0) {
             return $this->json422($errors, Response::HTTP_UNPROCESSABLE_ENTITY);
         }
 
-        //$contactRepository->add($newContact, true);
-        
         $em = $manager->getManager();
-        $em->persist($newContact);
+        $em->persist($new);
         $em->flush();
-        
-        return $this->json(
-            $newContact,
-            Response::HTTP_CREATED,
-            [
-                'Location' => $this->generateUrl('app_api_contact_read', ['id' => $newContact->getId()])
-            ],
-            [
-                "groups" => "app_api_contact_serviceAdministrativeDepartment"
-            ]
-        );
+
+        if ($new->getAdministrativeDepartment() !== null) {
+            return $this->json(
+                $new,
+                Response::HTTP_CREATED,
+                [
+                    'Location' => $this->generateUrl('app_api_contact_read', ['id' => $new->getId()])
+                ],
+                [
+                    "groups" => "app_api_contact_serviceAdministrativeDepartment"
+                ]
+            );
+        }
+
+        if ($new->getBabysittingService() !== null) {
+            return $this->json(
+                $new,
+                Response::HTTP_CREATED,
+                [
+                    'Location' => $this->generateUrl('app_api_contact_read', ['id' => $new->getId()])
+                ],
+                [
+                    "groups" => "app_api_contact_babysittingService"
+                ]
+            );
+        }
+
+        if ($new->getHousekeeping() !== null) {
+            return $this->json(
+                $new,
+                Response::HTTP_CREATED,
+                [
+                    'Location' => $this->generateUrl('app_api_contact_read', ['id' => $new->getId()])
+                ],
+                [
+                    "groups" => "app_api_contact_housekeeping"
+                ]
+            );
+        }
+
+        if ($new->getPersonalAssistanceService() !== null) {
+            return $this->json(
+                $new,
+                Response::HTTP_CREATED,
+                [
+                    'Location' => $this->generateUrl('app_api_contact_read', ['id' => $new->getId()])
+                ],
+                [
+                    "groups" => "app_api_contact_personalAssistanceService"
+                ]
+            );
+        }
     }
+
+    #Administrative Department Service
+    #"firstname": string
+    #"lastname": string
+    #"maiden_name": string
+    #"mail": string
+    #"adress": string
+    #"zip_code": int
+    #"city": string
+    #"phone_number": string
+    #"content": string
+    #"preferency": true / false
+    #"created_at": datetime
+    #"administrativeDepartment": {
+        #"firstname": string
+        #"lastname": string
+        #"mail": string
+        #"adress": string
+        #"city": string
+        #"content": string
+        #"firstname_of_deceased": string
+        #"lastname_of_deceased": string
+        #"maiden_name_of_deceased": string
+        #"adress_deceased": string
+        #"zip_code_of_deceased": int
+        #"city_of_deceased": string
+        #"date_of_birth": datetime
+        #"place_of_birth": string
+        #"date_of_deceased": datetime
+        #"place_of_deceased": string
+        #"postal_code": int
+    #}
+
+    #Babysitting Service
+    #"firstname": string
+    #"lastname": string
+    #"maiden_name": string
+    #"mail": string
+    #"adress": string
+    #"zip_code": int
+    #"city": string
+    #"phone_number": string
+    #"content": string
+    #"preferency": true / false
+    #"created_at": datetime
+    #"babysittingService": {
+        #"content": string
+        #"days": [id,id]
+        #"intervention": [id,id]
+        #"number_child": int
+        #"number_hour": int
+    #}
+
+    #Housekeeping Service
+    #"firstname": string
+    #"lastname": string
+    #"maiden_name": string
+    #"mail": string
+    #"adress": string
+    #"zip_code": int
+    #"city": string
+    #"phone_number": string
+    #"content": string
+    #"preferency": true / false
+    #"created_at": datetime
+    #"housekeeping": {
+        #"content": string
+        #"frequency": [id]
+        #"number_hour": int
+    #}
+
+    #Personal Assitance Service
+    #"firstname": string
+    #"lastname": string
+    #"maiden_name": string
+    #"mail": string
+    #"adress": string
+    #"zip_code": int
+    #"city": string
+    #"phone_number": string
+    #"content": string
+    #"preferency": true / false
+    #"created_at": datetime
+    #"personalAssistanceService": {
+        #"content": string
+        #"organization": string
+        #"personalAssistance": [id]
+        #"intervention": [id,id]
+        #"financial_help": true
+        #"number_hour": int
+    #}
 }

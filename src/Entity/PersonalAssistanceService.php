@@ -24,23 +24,25 @@ class PersonalAssistanceService
 
     /**
      * @ORM\Column(type="boolean")
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $financial_help;
 
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
-     * @Assert\NotBlank
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
-     * @Assert\NotBlank
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $organization;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $number_hour;
 
@@ -50,12 +52,14 @@ class PersonalAssistanceService
     private $contact;
 
     /**
-     * @ORM\ManyToMany(targetEntity=PersonalAssistance::class, inversedBy="personalAssistanceServices")
+     * @ORM\ManyToMany(targetEntity=PersonalAssistance::class, inversedBy="personalAssistanceServices", cascade={"persist", "remove"})
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $personalAssistance;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="personalAssistanceServices")
+     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="personalAssistanceServices", cascade={"persist", "remove"})
+     * @Groups("app_api_contact_personalAssistanceService")
      */
     private $intervention;
 

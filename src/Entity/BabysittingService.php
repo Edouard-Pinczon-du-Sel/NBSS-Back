@@ -24,17 +24,19 @@ class BabysittingService
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("app_api_contact_babysittingService")
      */
     private $number_child;
 
     /**
      * @ORM\Column(type="integer")
+     * @Groups("app_api_contact_babysittingService")
      */
     private $number_hour;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank
+     * @Groups("app_api_contact_babysittingService")
      */
     private $content;
 
@@ -44,12 +46,14 @@ class BabysittingService
     private $contact;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Days::class, inversedBy="babysittingServices")
+     * @ORM\ManyToMany(targetEntity=Days::class, inversedBy="babysittingServices", cascade={"persist", "remove"})
+     * @Groups("app_api_contact_babysittingService")
      */
     private $days;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="babysittingServices")
+     * @ORM\ManyToMany(targetEntity=Intervention::class, inversedBy="babysittingServices", cascade={"persist", "remove"})
+     * @Groups("app_api_contact_babysittingService")
      */
     private $intervention;
 

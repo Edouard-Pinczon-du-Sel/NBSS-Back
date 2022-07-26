@@ -30,14 +30,13 @@ class PictureController extends ApiController
         );
     }
     
-    #id: 2
-    #placeOrder: 1
+    #placeOrder: int
     #imageFile: null
     #image:
-      #name:
-      #originalName:
-      #mimeType:
-      #size:
-      #dimensions:
-    #updatedAt:  
+      #name: string
+      #originalName: string
+      #mimeType: string
+      #size: int
+      #dimensions: [string]
+    #updatedAt: datetime
 }

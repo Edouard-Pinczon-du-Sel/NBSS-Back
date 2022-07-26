@@ -19,8 +19,8 @@ class RecruitmentType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('content', TextareaType::class, [
-                'label' => 'Contenu'
+            ->add('description', TextareaType::class, [
+                'label' => 'Description'
             ])
             ->add('published_on', DateTimeType::class, [
                 'label' => 'Annonce publié le...',
