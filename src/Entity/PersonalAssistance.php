@@ -19,12 +19,13 @@ class PersonalAssistance
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_personal_assistance")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Groups("app_api_contact_personalAssistanceService")
+     * @Groups("app_api_personal_assistance")
      */
     private $type;
 

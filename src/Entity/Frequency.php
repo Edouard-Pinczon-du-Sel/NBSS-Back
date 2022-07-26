@@ -19,12 +19,14 @@ class Frequency
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_frequency")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Groups("app_api_contact_housekeeping")
+     * @Groups("app_api_frequency")
      */
     private $type;
 

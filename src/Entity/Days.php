@@ -19,12 +19,14 @@ class Days
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_days")
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Groups("app_api_contact_babysittingService")
+     * @Groups("app_api_days")
      */
     private $name;
 

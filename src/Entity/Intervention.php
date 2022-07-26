@@ -19,6 +19,7 @@ class Intervention
      * @ORM\Id
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
+     * @Groups("app_api_intervention")
      */
     private $id;
 
@@ -26,6 +27,7 @@ class Intervention
      * @ORM\Column(type="string", length=50)
      * @Groups("app_api_contact_babysittingService")
      * @Groups("app_api_contact_personalAssistanceService")
+     * @Groups("app_api_intervention")
      */
     private $moment;
 

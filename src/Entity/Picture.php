@@ -22,12 +22,14 @@ class Picture
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      * @Groups("app_api_picture_browse")
+     * @Groups("app_api_picture")
      */
     private $id;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
      * @Groups("app_api_picture_browse")
+     * @Groups("app_api_picture")
      */
     private $placeOrder;
 
@@ -41,13 +43,14 @@ class Picture
     /**
      * @ORM\Embedded(class="Vich\UploaderBundle\Entity\File")
      * @Groups("app_api_picture_browse")
+     * @Groups("app_api_picture")
      * @var EmbeddedFile
      */
     private $image;
 
     /**
      * @ORM\Column(type="datetime")
-     * @Groups("app_api_picture_browse")
+     * @Groups("app_api_picture")
      * @var \DateTimeInterface|null
      */
     private $updatedAt;
