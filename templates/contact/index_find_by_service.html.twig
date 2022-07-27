@@ -4,7 +4,7 @@
 
 {% block body %}
 
-<a type="button" href="{{ path('app_contact_index') }}"><span class="btn my-2">Tous</span></a>
+<a type="button" href="{{ path('app_contact_index') }}"><span class="btn">Tous</span></a>
 <a type="button" href="{{ path('app_contact_babysitting') }}"><span class="btn">Service Babysitting</span></a>
 <a type="button" href="{{ path('app_contact_housekeeping') }}"><span class="btn">Service Ménager</span></a>
 <a type="button" href="{{ path('app_contact_personalAssistance') }}"><span class="btn">Service Aide à la personne</span></a>
@@ -29,21 +29,21 @@
             <tr>
                 <td>{{ contact.firstname }}</td>
                 <td>{{ contact.lastname }}</td>
-                <td>{{ contact.maidenName }}</td>
+                <td>{{ contact.maiden_name }}</td>
                 <td>{{ contact.city }}</td>
-            {% if contact.babysittingService == true %}
+            {% if contact.babysitting_service_id == true %}
                 <td>Service : Garde d'enfant</td>
             {% endif %}
-            {% if contact.personalAssistanceService == true %}
+            {% if contact.personal_assistance_service_id == true %}
                 <td>Service : Aide à la personne</td>
             {% endif %}
-            {% if contact.housekeeping == true %}
+            {% if contact.housekeeping_id == true %}
                 <td>Service : Aide ménager</td>
             {% endif %}
-            {% if contact.administrativeDepartment == true %}
+            {% if contact.administrative_department_id == true %}
                 <td>Service : Administratif déçès</td>
             {% endif %}
-                <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d') : '' }}</td>  
+                <td>{{ contact.created_at ? contact.created_at|date('Y-m-d') : '' }}</td>  
                  <td class="edition">
                 <a type="button" href="{{ path('app_contact_show', {'id': contact.id}) }}"><span class="btn"> Voir </span></a>
                 {% if is_granted('ROLE_ADMIN') %}

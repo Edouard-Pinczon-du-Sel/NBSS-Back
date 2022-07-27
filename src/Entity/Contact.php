@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 use App\Repository\ContactRepository;
+use Doctrine\ORM\EntityRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
