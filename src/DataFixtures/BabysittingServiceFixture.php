@@ -26,7 +26,7 @@ use Doctrine\Persistence\ObjectManager;
             $babysittingService = new BabysittingService();
             $babysittingService->setNumberChild('32');
             $babysittingService->setNumberHour('4');
-            $babysittingService->setContent('');
+            $babysittingService->setContent('ne pas oublier  ceux du congelo');
             $manager->persist($babysittingService);
 
             $manager->flush();
