@@ -3,30 +3,31 @@
 {% block title %}Recruitment index{% endblock %}
 
 {% block body %}
-    <h1>Recruitment index</h1>
+    <h1>liste des annonces d'emploi</h1>
 
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Published_On</th>
-                <th>Visibility</th>
+             
+                <th>Titre</th>
+               
+                <th>Publier le </th>
+               
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for recruitment in recruitments %}
             <tr>
-                <td>{{ recruitment.id }}</td>
+                
                 <td>{{ recruitment.title }}</td>
-                <td>{{ recruitment.description }}</td>
+                
                 <td>{{ recruitment.publishedOn ? recruitment.publishedOn|date('Y-m-d') : '' }}</td>
                 <td>{{ recruitment.visibility ? 'Yes' : 'No' }}</td>
-                <td>
-                    <a href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">show</a>
-                    <a href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">edit</a>
+                <td class='edition' >
+                    <a class='btn' href="{{ path('app_recruitment_show', {'id': recruitment.id}) }}">Voir</a>
+                    <a  class='btn' href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">Modifier</a>
+                     {{ include('recruitment/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
@@ -37,5 +38,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_recruitment_new') }}">Create new</a>
+    <a class='btn'  href="{{ path('app_recruitment_new') }}">Ajouter</a>
 {% endblock %}

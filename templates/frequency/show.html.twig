@@ -18,9 +18,9 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_frequency_index') }}">back to list</a>
+    <a class="btn" href="{{ path('app_frequency_index') }}">retour</a>
 
-    <a href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit</a>
+    <a class="btn"  href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">edit</a>
 
     {{ include('frequency/_delete_form.html.twig') }}
 {% endblock %}
