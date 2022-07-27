@@ -84,7 +84,6 @@ class ContactRepository extends ServiceEntityRepository
         return $result->fetchAllAssociative();
     }
 
-
     public function findAllContactByPersonalAssistanceServiceSQL()
     {
         $sql = "SELECT * 
