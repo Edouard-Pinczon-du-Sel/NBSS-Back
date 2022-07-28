@@ -26,6 +26,46 @@ class ContactController extends AbstractController
     }
 
     /**
+     * @Route("/babysitting/service", name="app_contact_babysitting", methods={"GET"})
+     */
+    public function contactByServiceBabysitting(ContactRepository $contactRepository): Response
+    {
+        return $this->render('contact/index_find_by_service.html.twig', [
+            'contacts' => $contactRepository->findAllContactByBabysittingServiceSQL(),
+        ]);
+    }
+
+    /**
+     * @Route("/aide-menager/service", name="app_contact_housekeeping", methods={"GET"})
+     */
+    public function contactByHousekeeping(ContactRepository $contactRepository): Response
+    {
+        return $this->render('/contact/index_find_by_service.html.twig', [
+            'contacts' => $contactRepository->findAllContactByHousekeepingServiceSQL(),
+        ]);
+    }
+
+    /**
+     * @Route("/aide-personne/service", name="app_contact_personalAssistance", methods={"GET"})
+     */
+    public function contactByPersonalAssistance(ContactRepository $contactRepository): Response
+    {
+        return $this->render('/contact/index_find_by_service.html.twig', [
+            'contacts' => $contactRepository->findAllContactByPersonalAssistanceServiceSQL(),
+        ]);
+    }
+
+    /**
+     * @Route("/administratif/service", name="app_contact_administrativeDepartment", methods={"GET"})
+     */
+    public function contactByAdministrativeDepartment(ContactRepository $contactRepository): Response
+    {
+        return $this->render('/contact/index_find_by_service.html.twig', [
+            'contacts' => $contactRepository->findAllContactByAdministrativeDepartmentServiceSQL(),
+        ]);
+    }
+
+    /**
      * @Route("/new", name="app_contact_new", methods={"GET", "POST"})
      */
     public function new(Request $request, ContactRepository $contactRepository): Response
@@ -55,7 +95,6 @@ class ContactController extends AbstractController
         $personalAssistanceService = $contact->getPersonalAssistanceService();
         $housekeepingService = $contact->getHousekeeping();
         $administrativeDepartmentService = $contact->getAdministrativeDepartment();
-        //dd($administrativeDepartmentService);
         return $this->render('contact/show.html.twig', [
             'contact' => $contact,
             'babysittingService' => $babysittingService,

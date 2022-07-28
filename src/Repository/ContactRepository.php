@@ -39,6 +39,66 @@ class ContactRepository extends ServiceEntityRepository
         }
     }
 
+    public function findAllContactByAdministrativeDepartmentServiceSQL()
+    {
+        $sql = "SELECT * 
+        FROM contact 
+        WHERE administrative_department_id
+        ORDER BY administrative_department_id"
+        ;
+
+        $dbal = $this->getEntityManager()->getConnection();
+        $statement = $dbal->prepare($sql);
+        $result = $statement->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
+
+    public function findAllContactByBabysittingServiceSQL()
+    {   
+        $sql = "SELECT * 
+        FROM contact 
+        WHERE babysitting_service_id
+        ORDER BY babysitting_service_id"
+        ;
+
+        $dbal = $this->getEntityManager()->getConnection();
+        $statement = $dbal->prepare($sql);
+        $result = $statement->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
+
+    public function findAllContactByHousekeepingServiceSQL()
+    {
+        $sql = "SELECT * 
+        FROM contact 
+        WHERE housekeeping_id
+        ORDER BY housekeeping_id"
+        ;
+
+        $dbal = $this->getEntityManager()->getConnection();
+        $statement = $dbal->prepare($sql);
+        $result = $statement->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
+
+    public function findAllContactByPersonalAssistanceServiceSQL()
+    {
+        $sql = "SELECT * 
+        FROM contact 
+        WHERE personal_assistance_service_id
+        ORDER BY personal_assistance_service_id"
+        ;
+
+        $dbal = $this->getEntityManager()->getConnection();
+        $statement = $dbal->prepare($sql);
+        $result = $statement->executeQuery();
+
+        return $result->fetchAllAssociative();
+    }
+
 //    /**
 //     * @return Contact[] Returns an array of Contact objects
 //     */
