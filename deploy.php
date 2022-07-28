@@ -49,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'deploimentRelease2');
+set('repository_target_branch', 'development');
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
@@ -130,7 +130,7 @@ task('init:config:write:dev', function() {
 
 desc('Deploy project');
 task('first_deploy', [
-
+//NOTE commande terminal pour  le deploiment dep first_deploy prod -f deploy.php
     // https://deployer.org/docs/7.x/recipe/common#deployprepare
     'deploy:prepare',
 
@@ -160,8 +160,8 @@ task('first_deploy', [
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
 ]);
-task('second_deploy', [
-    // commande terminal pour  2 ee deploiment dep second_deploy prod -f deploy.php
+task('update_deploy', [
+    //NOTE commande terminal pour  2 ee deploiment dep update_deploy prod -f deploy.php
     // https://deployer.org/docs/7.x/recipe/common#deployprepare
     'deploy:prepare',
 
@@ -174,7 +174,7 @@ task('second_deploy', [
     // https://deployer.org/docs/7.x/recipe/symfony#deploycacheclear
     'deploy:cache:clear',
 
-  
+  //NOTE si erreur  precedament lors du deloiment il faut taper la commande dans le terminal  dep deploy:unlock prod -f deploy.php
   
 
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
