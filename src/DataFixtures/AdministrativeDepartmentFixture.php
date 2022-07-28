@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Bundle\FixturesBundle\FixtureGroupInterface;
 use Doctrine\Persistence\ObjectManager;
 use Faker;
+//NOTE a suuprime au deploiment final
 
     class AdministrativeDepartmentFixture extends Fixture implements FixtureGroupInterface
     {
