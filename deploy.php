@@ -13,7 +13,8 @@ set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction 
 // ---------------------------------------------------------------------------
 // Paramètres de notre application
 // ---------------------------------------------------------------------------
-set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.34");
+set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+
 // set("env_omdbapikey", "a93b767b");
 
 // ---------------------------------------------------------------------------
