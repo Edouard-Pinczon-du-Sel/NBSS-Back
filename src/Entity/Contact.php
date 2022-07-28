@@ -359,4 +359,5 @@ class Contact
 
         return $this;
     }
+    
 }
