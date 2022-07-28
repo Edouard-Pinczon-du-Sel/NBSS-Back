@@ -13,7 +13,8 @@ set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction 
 // ---------------------------------------------------------------------------
 // Paramètres de notre application
 // ---------------------------------------------------------------------------
-set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.34");
+set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+
 // set("env_omdbapikey", "a93b767b");
 
 // ---------------------------------------------------------------------------
@@ -48,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'development');
+set('repository_target_branch', 'deployerEssai2');
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
