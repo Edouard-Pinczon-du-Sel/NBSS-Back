@@ -49,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'deployerEssai2');
+set('repository_target_branch', 'deploimentRelease2');
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
@@ -155,6 +155,26 @@ task('first_deploy', [
     // on lance les fixtures
     'init:fixtures',
 
+  
+
+    // https://deployer.org/docs/7.x/recipe/common#deploypublish
+    'deploy:publish'
+]);
+task('second_deploy', [
+    // commande terminal pour  2 ee deploiment dep second_deploy prod -f deploy.php
+    // https://deployer.org/docs/7.x/recipe/common#deployprepare
+    'deploy:prepare',
+
+    // on écrit notre fichier .env.local
+    'init:config:write:dev',
+
+    // https://deployer.org/docs/7.x/recipe/deploy/vendors#deployvendors
+    'deploy:vendors',
+
+    // https://deployer.org/docs/7.x/recipe/symfony#deploycacheclear
+    'deploy:cache:clear',
+
+  
   
 
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
