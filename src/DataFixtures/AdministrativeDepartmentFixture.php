@@ -12,8 +12,8 @@ use Faker;
     {
         public function load(ObjectManager $manager): void
         {
-                // Instaciation de l'usine de Faker
-                $faker = Faker\Factory::create('fr_FR');
+            // Instaciation de l'usine de Faker
+            $faker = Faker\Factory::create('fr_FR');
 
             $administrativeDepartment= new AdministrativeDepartment();
             // utilisation de faker pour gernéré de faux nom et prenom
@@ -35,14 +35,9 @@ use Faker;
             $administrativeDepartment->setPostalCode('65821');
             $administrativeDepartment->setCity('bobycity');
             $administrativeDepartment->setContent('');
-            
             $manager->persist($administrativeDepartment);
 
-          
-
             $manager->flush();
-
-
         }
 
         /**

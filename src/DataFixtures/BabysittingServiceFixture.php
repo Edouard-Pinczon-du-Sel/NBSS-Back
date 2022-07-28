@@ -14,7 +14,7 @@ use Doctrine\Persistence\ObjectManager;
             $babysittingService = new BabysittingService();
             $babysittingService->setNumberChild('2');
             $babysittingService->setNumberHour('3');
-            $babysittingService->setContent('il sont chauves les pauvres');
+            $babysittingService->setContent('Il sont chauves les pauvres');
             $manager->persist($babysittingService);
 
             $babysittingService = new BabysittingService();
@@ -26,12 +26,10 @@ use Doctrine\Persistence\ObjectManager;
             $babysittingService = new BabysittingService();
             $babysittingService->setNumberChild('32');
             $babysittingService->setNumberHour('4');
-            $babysittingService->setContent('ne pas oublier  ceux du congelo');
+            $babysittingService->setContent('Merci de ne pas oublier ceux du congelo');
             $manager->persist($babysittingService);
 
             $manager->flush();
-
-
         }
 
         /**

@@ -19,11 +19,9 @@ use Doctrine\Persistence\ObjectManager;
             $personalAssistance->setType('Toilette');
             $manager->persist($personalAssistance);
 
-
             $personalAssistance= new PersonalAssistance();
             $personalAssistance->setType('Douche');
             $manager->persist($personalAssistance);
-
 
             $personalAssistance= new PersonalAssistance();
             $personalAssistance->setType('Repas');
@@ -38,8 +36,6 @@ use Doctrine\Persistence\ObjectManager;
             $manager->persist($personalAssistance);
 
             $manager->flush();
-
-
         }
 
         /**

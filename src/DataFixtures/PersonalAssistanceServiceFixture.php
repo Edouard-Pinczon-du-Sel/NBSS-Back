@@ -14,7 +14,7 @@ use Doctrine\Persistence\ObjectManager;
             $personalAssistanceService= new PersonalAssistanceService();
             $personalAssistanceService->setFinancialHelp('1');
             $personalAssistanceService -> setContent('');
-            $personalAssistanceService -> setOrganization('mutuelle');
+            $personalAssistanceService -> setOrganization('Mutuelle');
             $personalAssistanceService -> setNumberHour('2');
             $manager->persist($personalAssistanceService);
 
@@ -24,12 +24,8 @@ use Doctrine\Persistence\ObjectManager;
             $personalAssistanceService -> setOrganization('');
             $personalAssistanceService -> setNumberHour('0');
             $manager->persist($personalAssistanceService);
-
-
             
             $manager->flush();
-
-
         }
 
         /**

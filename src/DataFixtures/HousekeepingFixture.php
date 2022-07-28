@@ -13,19 +13,15 @@ use Doctrine\Persistence\ObjectManager;
         {
             $housekeeping = new Housekeeping();
             $housekeeping->setNumberHour('3');
-            $housekeeping -> setContent('a l\'etage');
+            $housekeeping -> setContent('à l\'etage');
             $manager->persist($housekeeping);
 
             $housekeeping = new Housekeeping();
             $housekeeping->setNumberHour('1');
             $housekeeping -> setContent('pour la vaisselle car le lave vaiselle est en panne ');
             $manager->persist($housekeeping);
-
-
             
             $manager->flush();
-
-
         }
 
         /**

@@ -20,25 +20,18 @@ use Doctrine\Persistence\ObjectManager;
             $manager->persist($intervention );
 
             $intervention = new Intervention();
-            $intervention ->setMoment('aprés-midi');
+            $intervention ->setMoment('Après-midi');
             $manager->persist($intervention );
 
             $intervention = new Intervention();
             $intervention ->setMoment('Diner');
             $manager->persist($intervention );
 
-
             $intervention = new Intervention();
-            $intervention ->setMoment('soir');
+            $intervention ->setMoment('Soir');
             $manager->persist($intervention );
-
-         
-           
-            
-
+  
             $manager->flush();
-
-
         }
 
         /**

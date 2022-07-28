@@ -12,29 +12,26 @@ use Doctrine\Persistence\ObjectManager;
         public function load(ObjectManager $manager): void
         {
             $frequency = new Frequency();
-            $frequency->setType('hebdomadaire');
+            $frequency->setType('Hebdomadaire');
             $manager->persist($frequency);
 
             $frequency = new Frequency();
-            $frequency->setType('1 fois par semaine');
+            $frequency->setType('Une fois par semaine');
             $manager->persist($frequency);
 
             $frequency = new Frequency();
-            $frequency->setType('1 fois par quinzaine');
+            $frequency->setType('Une fois par quinzaine');
             $manager->persist($frequency);
 
             $frequency = new Frequency();
-            $frequency->setType('1 fois par mois');
+            $frequency->setType('Une fois par mois');
             $manager->persist($frequency);
 
             $frequency = new Frequency();
-            $frequency->setType('ponctuel');
+            $frequency->setType('Ponctuel');
             $manager->persist($frequency);
             
-
             $manager->flush();
-
-
         }
 
         /**

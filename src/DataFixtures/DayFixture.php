@@ -24,7 +24,7 @@ use Doctrine\Persistence\ObjectManager;
             $manager->persist($days);
 
             $days = new Days();
-            $days->setName('jeudi');
+            $days->setName('Jeudi');
             $manager->persist($days);
 
             $days = new Days();
@@ -34,15 +34,12 @@ use Doctrine\Persistence\ObjectManager;
             $days = new Days();
             $days->setName('Samedi');
             $manager->persist($days);
-            $days = new Days();
 
+            $days = new Days();
             $days->setName('Dimanche');
             $manager->persist($days);
-            $manager->flush();
 
             $manager->flush();
-
-
         }
 
         /**
