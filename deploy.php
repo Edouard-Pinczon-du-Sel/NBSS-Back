@@ -49,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'development');
+set('repository_target_branch', 'essaiImagesCarrousel');
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
