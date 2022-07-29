@@ -22,8 +22,9 @@
                
                 <td>{{ picture.placeOrder }}</td>
                 <td>{{ picture.image.originalName}}</td>
-                <td><img class="border img-thumbnail img-fluid imgage" src="{{ asset(images/carrousel/{{'picture.imageName'}} ) }}" ></td>
-                
+                <td><img class="border img-thumbnail img-fluid imgage" src="{{ asset('images/bureau-62e38f9897cd2555671709.jpeg') }}" ></td>
+                {# {{ asset(images/carrousel/{{'picture.imageName'}} ) }} #}
+                {# "{{ asset('images/carousel/bureau-62e38f9897cd2555671709.jpeg') }}" #}
 
                 <td>
                 {{ include('picture/_delete_form.html.twig') }}
