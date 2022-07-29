@@ -45,8 +45,8 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # l'ordre des ces deux ACL est important
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
+        # - { path: ^/api/login, roles: PUBLIC_ACCESS }
+        # - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
         
         # Back : Sécuriser toutes les routes /add /edit /delete avec ROLE_ADMIN.
         - { path: /back, roles: [ROLE_ADMIN] }
