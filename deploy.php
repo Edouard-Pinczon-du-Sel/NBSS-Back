@@ -179,3 +179,4 @@ task('prod_update', [
 // du fichier 'deploy.lock' présent dans le répertoire '.dep' qui sert
 // d'indicateur de 'déploiement en cours'
 after('deploy:failed', 'deploy:unlock');
+
