@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 use Vich\UploaderBundle\Entity\File as EmbeddedFile;
@@ -50,6 +49,7 @@ class Picture
 
     /**
      * @ORM\Column(type="datetime")
+     * @Groups("app_api_picture_browse")
      * @Groups("app_api_picture")
      * @var \DateTimeInterface|null
      */
