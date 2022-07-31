@@ -5,7 +5,6 @@ namespace App\Entity;
 use App\Repository\PictureRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\HttpFoundation\File\File;
-
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -51,15 +50,26 @@ class Picture
 
     /**
      * @ORM\Column(type="datetime")
-     * @Assert\NotBlank()
      * @Groups("app_api_picture")
      * @var \DateTimeInterface|null
      */
     private $updatedAt;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     * @Groups("app_api_picture_browse")
+     * @Groups("app_api_picture")
+     */
+    private $urlPicture;
     
     public function __construct()
     {
         $this->image = new EmbeddedFile();
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
     /**
@@ -82,19 +92,14 @@ class Picture
         }
     }
 
-    public function getImageFile(): ?File
+    public function getImage(): ?EmbeddedFile
     {
-        return $this->imageFile;
+        return $this->image;
     }
 
     public function setImage(EmbeddedFile $image): void
     {
         $this->image = $image;
-    }
-
-    public function getImage(): ?EmbeddedFile
-    {
-        return $this->image;
     }
 
     public function getId(): ?int
@@ -122,6 +127,18 @@ class Picture
     public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    public function getUrlPicture(): ?string
+    {
+        return $this->urlPicture;
+    }
+
+    public function setUrlPicture(?string $urlPicture): self
+    {
+        $this->urlPicture = $urlPicture;
 
         return $this;
     }

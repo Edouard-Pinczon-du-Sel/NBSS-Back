@@ -26,16 +26,6 @@ class PictureController extends AbstractController
     }
 
     /**
-     * @Route("/homeOrder", name="app_picture_home-order", methods={"GET"})
-     */
-    public function homeOrder(PictureRepository $pictureRepository): Response
-    {
-        return $this->render('home-order/home-order.html.twig', [
-            'pictures' => $pictureRepository->findAll(),
-        ]);
-    }
-
-    /**
      * @Route("/new", name="app_picture_new", methods={"GET", "POST"})
      */
     public function new(Request $request, PictureRepository $pictureRepository): Response
@@ -45,8 +35,11 @@ class PictureController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
             $pictureRepository->add($picture, true);
-
+            $url =$picture->getImage()->getName();
+            $picture->setUrlPicture("http://localhost:8000/images/carrousel/".$url."");
+            $pictureRepository->add($picture, true);
             return $this->redirectToRoute('app_picture_index', [], Response::HTTP_SEE_OTHER);
         }
 
