@@ -29,6 +29,7 @@ class Contact
     /**
      * @ORM\Column(type="string", length=50)
      * @Groups("app_api_serviceAdministrativeDepartment")
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
      * @Groups("app_api_contact_housekeeping")
@@ -39,6 +40,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -61,6 +63,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -72,6 +75,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -83,6 +87,7 @@ class Contact
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -94,6 +99,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -105,6 +111,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=10)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -116,6 +123,7 @@ class Contact
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")
@@ -138,6 +146,7 @@ class Contact
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_babysittingService")

@@ -30,18 +30,21 @@ class PersonalAssistanceService
 
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_personalAssistanceService")
      */
     private $content;
 
     /**
      * @ORM\Column(type="string", length=250, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_personalAssistanceService")
      */
     private $organization;
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_personalAssistanceService")
      */
     private $number_hour;

@@ -25,6 +25,7 @@ class Intervention
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_babysittingService")
      * @Groups("app_api_contact_personalAssistanceService")
      * @Groups("app_api_intervention")

@@ -24,18 +24,21 @@ class BabysittingService
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_babysittingService")
      */
     private $number_child;
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_babysittingService")
      */
     private $number_hour;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_babysittingService")
      */
     private $content;

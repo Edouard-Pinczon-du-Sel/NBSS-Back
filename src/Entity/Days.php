@@ -25,6 +25,7 @@ class Days
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_babysittingService")
      * @Groups("app_api_days")
      */
