@@ -19,37 +19,36 @@ class RecruitmentType extends AbstractType
             ->add('title', TextType::class, [
                 'label' => 'Titre'
             ])
-            ->add('title_description', TextareaType::class, [
-                'label' => 'titre descriptif '
+            ->add('title_description', TextType::class, [
+                'label' => 'Titre descriptif '
             ])
             ->add('description', TextareaType::class, [
-                'label' => 'description '
+                'label' => 'Description '
             ])
-            ->add('title_description2', TextareaType::class, [
-                'label' => 'titre descriptif2 '
+            ->add('title_description2', TextType::class, [
+                'label' => 'Titre descriptif2 '
             ])
             ->add('description2', TextareaType::class, [
-                'label' => 'description2 '
+                'label' => 'Description2 '
             ])
-            ->add('title_description3', TextareaType::class, [
-                'label' => 'titre descriptif3 '
+            ->add('title_description3', TextType::class, [
+                'label' => 'Titre descriptif3 '
             ])
             ->add('description3', TextareaType::class, [
-                'label' => 'description3 '
+                'label' => 'Description3 '
             ])
             ->add('we_search', TextareaType::class, [
-                'label' => 'nous recherchons '
+                'label' => 'Nous recherchons '
             ])
             ->add('avantage', TextareaType::class, [
-                'label' => 'avantage'
+                'label' => 'Avantage'
             ])
             ->add('licence_requeried', TextareaType::class, [
-                'label' => 'diplôme requis',
+                'label' => 'Diplôme requis',
                
             ])
-           
             ->add('experience_requeried', TextareaType::class, [
-                'label' => 'expériences  requises'
+                'label' => 'Expériences  requises'
             ])
             ->add('drive_license', ChoiceType::class, [
                 'label' => 'Permis de conduire',
@@ -63,10 +62,10 @@ class RecruitmentType extends AbstractType
                 'label' => 'info sur les déplacement'
             ])
             ->add('type_contrat', TextareaType::class, [
-                'label' => 'type de contrat'
+                'label' => 'Type de contrat'
             ])
             ->add('working_hour', TextareaType::class, [
-                'label' => 'horaire de travail'
+                'label' => 'Horaire de travail'
             ])
             ->add('day_off', TextareaType::class, [
                 'label' => 'Jour off'
@@ -85,8 +84,8 @@ class RecruitmentType extends AbstractType
             ->add('visibility', ChoiceType::class, [
                 'label' => 'Visibilitée de l\'annonce',
                 'choices' => [
-                    'Visible' => 1, 
-                    'Non-visible' => 0
+                    'Annonce visible' => 1, 
+                    'Annonce non-visible' => 0
                 ],
                 'expanded' => true,
             ])
