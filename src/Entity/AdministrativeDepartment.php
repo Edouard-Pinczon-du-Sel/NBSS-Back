@@ -21,6 +21,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -28,6 +29,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -42,6 +44,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -49,6 +52,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -56,6 +60,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -63,6 +68,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -70,6 +76,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -77,6 +84,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -84,6 +92,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -91,6 +100,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -98,6 +108,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -105,6 +116,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -112,6 +124,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -119,6 +132,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="integer", nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -126,6 +140,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */
@@ -133,6 +148,7 @@ class AdministrativeDepartment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_serviceAdministrativeDepartment")
      * @Groups("app_api_contact_serviceAdministrativeDepartment")
      */

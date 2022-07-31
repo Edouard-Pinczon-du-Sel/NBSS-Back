@@ -25,6 +25,7 @@ class PersonalAssistance
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_personal_assistance")
      */
     private $type;

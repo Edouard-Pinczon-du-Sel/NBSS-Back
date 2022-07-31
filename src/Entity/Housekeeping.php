@@ -24,12 +24,14 @@ class Housekeeping
 
     /**
      * @ORM\Column(type="integer")
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_housekeeping")
      */
     private $number_hour;
 
     /**
      * @ORM\Column(type="string", length=250)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_housekeeping")
      */
     private $content;

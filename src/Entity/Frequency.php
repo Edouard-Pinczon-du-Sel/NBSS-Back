@@ -25,6 +25,7 @@ class Frequency
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_contact_housekeeping")
      * @Groups("app_api_frequency")
      */

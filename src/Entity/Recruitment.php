@@ -23,6 +23,7 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title;
@@ -35,108 +36,126 @@ class Recruitment
 
     /**
      * @ORM\Column(type="date", nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $published_on;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title_description;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $description;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title_description2;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $description2;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title_description3;
 
     /**
      * @ORM\Column(type="text", nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $description3;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $we_search;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $avantage;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $licence_requeried;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $experience_requeried;
 
     /**
      * @ORM\Column(type="boolean")
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $drive_license;
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $type_contrat;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $salary;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $deplacement_info;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $day_off;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $opportunity;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $working_hour;
