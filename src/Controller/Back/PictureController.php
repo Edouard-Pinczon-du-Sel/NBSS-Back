@@ -38,7 +38,9 @@ class PictureController extends AbstractController
             
             $pictureRepository->add($picture, true);
             $url =$picture->getImage()->getName();
-            $picture->setUrlPicture("http://localhost:8000/images/carrousel/".$url."");
+            $picture->setUrlPicture("http://gatechien-server.eddi.cloud/NB-services-et-soin/current/public/images/carrousel/".$url."");
+            //$picture->setUrlPicture("http://virginieboissiere-server.eddi.cloud/NB-services-et-soin/current/public/images/carrousel/".$url."");
+            //$picture->setUrlPicture("http://localhost:8000/public/images/carrousel/".$url."");
             $pictureRepository->add($picture, true);
             return $this->redirectToRoute('app_picture_index', [], Response::HTTP_SEE_OTHER);
         }

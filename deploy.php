@@ -49,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'deploy-AT');
+set('repository_target_branch', 'development');
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
@@ -124,6 +124,11 @@ task('init:config:write:dev', function() {
     run('echo "DATABASE_URL={{env_database}}" >> {{remote_server_target_repository}}/shared/.env.local');
 });
 
+desc('Générer une nouvelle clef api');
+task('lexik:jwt:generate-keypair', function () {
+    run("{{bin/console}} lexik:jwt:generate-keypair");
+});
+
 desc('Deploy project');
 task('first_deploy', [
 //NOTE commande terminal pour le deploiment: dep first_deploy prod -f deploy.php
@@ -154,6 +159,9 @@ task('first_deploy', [
     // on écrit notre fichier .env.local
     'init:config:write:prod',
 
+    // on génére une nouvelle clef api
+    'lexik:jwt:generate-keypair',
+
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
 ]);
@@ -170,6 +178,9 @@ task('prod_update', [
 
     // https://deployer.org/docs/7.x/recipe/symfony#databasemigrate
     'database:migrate',
+    
+    // on génére une nouvelle clef api
+    'lexik:jwt:generate-keypair',
     
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'

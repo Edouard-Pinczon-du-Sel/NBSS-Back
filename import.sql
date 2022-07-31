@@ -107,9 +107,7 @@ INSERT INTO `days` (`id`, `name`) VALUES
 (2,	'Mardi'),
 (3,	'Mercredi'),
 (4,	'Jeudi'),
-(5,	'Vendredi'),
-(6,	'Samedi'),
-(7,	'Dimanche');
+(5,	'Vendredi');
 
 DROP TABLE IF EXISTS `doctrine_migration_versions`;
 CREATE TABLE `doctrine_migration_versions` (
@@ -120,7 +118,7 @@ CREATE TABLE `doctrine_migration_versions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220729134613',	'2022-07-29 15:46:24',	253);
+('DoctrineMigrations\\Version20220731230048',	'2022-08-01 01:00:57',	250);
 
 DROP TABLE IF EXISTS `frequency`;
 CREATE TABLE `frequency` (
@@ -226,6 +224,7 @@ CREATE TABLE `picture` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `place_order` int(11) DEFAULT NULL,
   `updated_at` datetime NOT NULL,
+  `url_picture` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_original_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `image_mime_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -278,4 +277,4 @@ INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
 (1,	'admin@admin.com',	'[\"ROLE_ADMIN\"]',	'$2y$13$mF7yH3UE2u9sm8pjqD6Sa.W3U90sHS/NucXMYioqR1wwV5Gxs3rba'),
 (2,	'manager@manager.com',	'[\"ROLE_MANAGER\"]',	'$2y$13$1OREOb3M1.JdrsU7TkmbGeCcTg7nkhyHTqB8wmmsgebOGTnA/Lmoa');
 
--- 2022-07-29 13:49:12
+-- 2022-07-31 23:04:14
