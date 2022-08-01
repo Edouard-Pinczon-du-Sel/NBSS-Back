@@ -13,8 +13,8 @@ set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction 
 // ---------------------------------------------------------------------------
 // Paramètres de notre application
 // ---------------------------------------------------------------------------
-// set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
-set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+//set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
 
 // ---------------------------------------------------------------------------
 // Paramètres de connexion au serveur distant
@@ -29,8 +29,8 @@ set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVe
 
 // Adresse du serveur distant (adresse IP ou DNS public)
 // set('remote_server_url','adresse_ip_ou_dns_public_du_serveur');
-// set('remote_server_url','gatechien-server.eddi.cloud');
-set('remote_server_url','virginieboissiere-server.eddi.cloud');
+set('remote_server_url','gatechien-server.eddi.cloud');
+//set('remote_server_url','virginieboissiere-server.eddi.cloud');
 
 // Nom du compte utilisateur sur le serveur distant/
 // C'est cet utilisateur qui exécutera les commandes distantes.
@@ -90,7 +90,7 @@ host('prod')
     // pour se connecter à notre VM Kourou.
     // ->set('identity_file','~/.ssh/{{ssh_key_filename}}')
 
-/// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // Définition des tâches (tasks)
 // ---------------------------------------------------------------------------
 
@@ -99,38 +99,39 @@ task('init:database', function() {
     run('{{bin/console}} doctrine:database:create');
 });
 
-desc('Supression base de données');
-task('init:database:drop', function() {
-    run('{{bin/console}} doctrine:database:drop --if-exists --no-interaction --force');
-});
+//desc('Supression base de données');
+//task('init:database:drop', function() {
+    //run('{{bin/console}} doctrine:database:drop --if-exists --no-interaction --force');
+//});
 
-
-
-desc("Création des fixtures");
-task('init:fixtures', function () {
+//desc("Création des fixtures");
+//task('init:fixtures', function () {
     // comme la commande fixture nous pose la question si OUI ou NON on vide la base de données
     // et que l'on ne peut pas intéragir, on ajoute un "yes | " pour pré-répondre à la question
-    run('yes | {{bin/console}} doctrine:fixtures:load');
-});
+    //run('yes | {{bin/console}} doctrine:fixtures:load');
+//});
 
 desc('écraser le .env.local PUIS écrire les paramètres de PROD');
 task('init:config:write:prod', function() {
     // {{remote_server_target_repository}} == '/var/www/html/NB-services-et-soin
     run('echo "APP_ENV=prod" > {{remote_server_target_repository}}/shared/.env.local');
     run('echo "DATABASE_URL={{env_database}}" >> {{remote_server_target_repository}}/shared/.env.local');
-
 });
 
 desc('écraser le .env.local PUIS écrire les paramètres de DEV');
 task('init:config:write:dev', function() {
     run('echo "APP_ENV=dev" > {{remote_server_target_repository}}/shared/.env.local');
     run('echo "DATABASE_URL={{env_database}}" >> {{remote_server_target_repository}}/shared/.env.local');
-   
+});
+
+desc('Générer une nouvelle clef api');
+task('lexik:jwt:generate-keypair', function () {
+    run("{{bin/console}} lexik:jwt:generate-keypair");
 });
 
 desc('Deploy project');
 task('first_deploy', [
-
+//NOTE commande terminal pour le deploiment: dep first_deploy prod -f deploy.php
     // https://deployer.org/docs/7.x/recipe/common#deployprepare
     'deploy:prepare',
 
@@ -144,7 +145,7 @@ task('first_deploy', [
     'deploy:cache:clear',
 
     // au cas où il existe la BDD
-    'init:database:drop',
+    //'init:database:drop',
 
     // on crée la base de donnée
     'init:database',
@@ -152,21 +153,22 @@ task('first_deploy', [
     // https://deployer.org/docs/7.x/recipe/symfony#databasemigrate
     'database:migrate',
 
-    // // on lance les fixtures
-    // 'init:fixtures',
+    // on lance les fixtures
+    //'init:fixtures',
 
-  
+    // on écrit notre fichier .env.local
+    'init:config:write:prod',
+
+    // on génére une nouvelle clef api
+    'lexik:jwt:generate-keypair',
 
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
 ]);
-task('second_deploy', [
-    // commande terminal pour  2 ee deploiment dep second_deploy prod -f deploy.php
+task('prod_update', [
+    //NOTE commande terminal pour  2 ee deploiment dep update_deploy prod -f deploy.php
     // https://deployer.org/docs/7.x/recipe/common#deployprepare
     'deploy:prepare',
-
-    // on écrit notre fichier .env.local
-    'init:config:write:dev',
 
     // https://deployer.org/docs/7.x/recipe/deploy/vendors#deployvendors
     'deploy:vendors',
@@ -174,9 +176,12 @@ task('second_deploy', [
     // https://deployer.org/docs/7.x/recipe/symfony#deploycacheclear
     'deploy:cache:clear',
 
-  
-  
-
+    // https://deployer.org/docs/7.x/recipe/symfony#databasemigrate
+    'database:migrate',
+    
+    // on génére une nouvelle clef api
+    'lexik:jwt:generate-keypair',
+    
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
 ]);
@@ -185,3 +190,4 @@ task('second_deploy', [
 // du fichier 'deploy.lock' présent dans le répertoire '.dep' qui sert
 // d'indicateur de 'déploiement en cours'
 after('deploy:failed', 'deploy:unlock');
+
