@@ -12,6 +12,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 /**
  * @Route("/api/contact", name="app_api_contact_")
@@ -107,11 +109,9 @@ class ContactController extends ApiController
      * @param ValidatorInterface $validator
      * @return JsonResponse
      */
-    public function add(Request $request, ManagerRegistry $manager, SerializerInterface $serializerInterface, ValidatorInterface $validator): JsonResponse
+    public function add(Request $request, ManagerRegistry $manager, SerializerInterface $serializerInterface, ValidatorInterface $validator,MailerInterface $mailer): JsonResponse
     {
-        if (!$this->isGranted("ROLE_MANAGER")) {
-            return $this->json(["error"=>"Authorised user only"], Response::HTTP_FORBIDDEN);
-        }
+      
 
         $jsonContent = $request->getContent();
 
@@ -130,6 +130,14 @@ class ContactController extends ApiController
         $em = $manager->getManager();
         $em->persist($new);
         $em->flush();
+          //email
+          $email = (new Email())
+          ->from('hello@example.com')
+          ->to('you@example.com')
+          ->subject('formulaire  reçu!')
+          ->text('formulaire  reçu')
+          ->html('<p>formulaire  reçu</p>');
+          $mailer->send($email);
 
         if ($new->getAdministrativeDepartment() !== null) {
             return $this->json(
