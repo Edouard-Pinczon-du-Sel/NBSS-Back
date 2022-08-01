@@ -111,8 +111,6 @@ class ContactController extends ApiController
      */
     public function add(Request $request, ManagerRegistry $manager, SerializerInterface $serializerInterface, ValidatorInterface $validator,MailerInterface $mailer): JsonResponse
     {
-      
-
         $jsonContent = $request->getContent();
 
         try {
@@ -134,9 +132,9 @@ class ContactController extends ApiController
           $email = (new Email())
           ->from('hello@example.com')
           ->to('you@example.com')
-          ->subject('formulaire  reçu!')
-          ->text('formulaire  reçu')
-          ->html('<p>formulaire  reçu</p>');
+          ->subject('formulaire reçus')
+          ->text('formulaire reçus')
+          ->html('<p>formulaire reçus</p>');
           $mailer->send($email);
 
         if ($new->getAdministrativeDepartment() !== null) {

@@ -44,10 +44,8 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
-        # l'ordre des ces deux ACL est important
-        - { path: ^/api/login, roles: PUBLIC_ACCESS }
-        - { path: ^/api,       roles: IS_AUTHENTICATED_FULLY }
-        - { path: ^/api/contact, roles: PUBLIC_ACCESS }
+        # Api en public access, nous n'avons pas de login en front
+        - { path: ^/api, roles: PUBLIC_ACCESS }
         
         # Back : Sécuriser toutes les routes /add /edit /delete avec ROLE_ADMIN.
         - { path: /back, roles: [ROLE_ADMIN] }
