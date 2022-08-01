@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 /**
  * @Route("/back/contact")
  */
@@ -68,7 +69,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="app_contact_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, ContactRepository $contactRepository): Response
+    public function new(Request $request, ContactRepository $contactRepository,MailerInterface $mailer): Response
     {
         $contact = new Contact();
         $form = $this->createForm(ContactType::class, $contact);
@@ -76,6 +77,18 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $contactRepository->add($contact, true);
+                  //email
+                  $email = (new Email())
+                  ->from('hello@example.com')
+                  ->to('you@example.com')
+                  //->cc('cc@example.com')
+                  //->bcc('bcc@example.com')
+                  //->replyTo('fabien@example.com')
+                  //->priority(Email::PRIORITY_HIGH)
+                  ->subject('formulaire  reçu!')
+                  ->text('formulaire  reçu')
+                  ->html('<p>formulaire  reçu</p>');
+                  $mailer->send($email);
 
             return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
         }
