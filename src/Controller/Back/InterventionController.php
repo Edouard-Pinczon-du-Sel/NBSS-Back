@@ -9,7 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 /**
  * @Route("/back/intervention")
  */
@@ -28,7 +29,7 @@ class InterventionController extends AbstractController
     /**
      * @Route("/new", name="app_intervention_new", methods={"GET", "POST"})
      */
-    public function new(Request $request, InterventionRepository $interventionRepository): Response
+    public function new(Request $request, InterventionRepository $interventionRepository,MailerInterface $mailer): Response
     {
         $intervention = new Intervention();
         $form = $this->createForm(InterventionType::class, $intervention);
@@ -36,6 +37,18 @@ class InterventionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $interventionRepository->add($intervention, true);
+               //email
+               $email = (new Email())
+               ->from('hello@example.com')
+               ->to('you@example.com')
+               //->cc('cc@example.com')
+               //->bcc('bcc@example.com')
+               //->replyTo('fabien@example.com')
+               //->priority(Email::PRIORITY_HIGH)
+               ->subject('Time for Symfony Mailer!')
+               ->text('Sending emails is fun again!')
+               ->html('<p>moment ajouter</p>');
+               $mailer->send($email);
 
             return $this->redirectToRoute('app_intervention_index', [], Response::HTTP_SEE_OTHER);
         }
