@@ -124,10 +124,10 @@ task('init:config:write:dev', function() {
     run('echo "DATABASE_URL={{env_database}}" >> {{remote_server_target_repository}}/shared/.env.local');
 });
 
-desc('Générer une nouvelle clef api');
-task('lexik:jwt:generate-keypair', function () {
-    run("{{bin/console}} lexik:jwt:generate-keypair");
-});
+//desc('Générer une nouvelle clef api');
+//task('lexik:jwt:generate-keypair', function () {
+    //run("{{bin/console}} lexik:jwt:generate-keypair");
+//});
 
 desc('Deploy project');
 task('first_deploy', [
@@ -160,7 +160,7 @@ task('first_deploy', [
     'init:config:write:prod',
 
     // on génére une nouvelle clef api
-    'lexik:jwt:generate-keypair',
+    //'lexik:jwt:generate-keypair',
 
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
@@ -180,7 +180,7 @@ task('prod_update', [
     'database:migrate',
     
     // on génére une nouvelle clef api
-    'lexik:jwt:generate-keypair',
+    //'lexik:jwt:generate-keypair',
     
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
