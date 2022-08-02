@@ -13,8 +13,8 @@ set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction 
 // ---------------------------------------------------------------------------
 // Paramètres de notre application
 // ---------------------------------------------------------------------------
-set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
-//set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+// set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
 
 // ---------------------------------------------------------------------------
 // Paramètres de connexion au serveur distant
@@ -29,8 +29,8 @@ set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverV
 
 // Adresse du serveur distant (adresse IP ou DNS public)
 // set('remote_server_url','adresse_ip_ou_dns_public_du_serveur');
-set('remote_server_url','gatechien-server.eddi.cloud');
-//set('remote_server_url','virginieboissiere-server.eddi.cloud');
+// set('remote_server_url','gatechien-server.eddi.cloud');
+set('remote_server_url','virginieboissiere-server.eddi.cloud');
 
 // Nom du compte utilisateur sur le serveur distant/
 // C'est cet utilisateur qui exécutera les commandes distantes.
@@ -174,13 +174,13 @@ task('prod_update', [
     'deploy:vendors',
 
     // https://deployer.org/docs/7.x/recipe/symfony#deploycacheclear
-    'deploy:cache:clear',
+    // 'deploy:cache:clear',
 
     // https://deployer.org/docs/7.x/recipe/symfony#databasemigrate
     'database:migrate',
     
     // on génére une nouvelle clef api
-    'lexik:jwt:generate-keypair',
+    // 'lexik:jwt:generate-keypair',
     
     // https://deployer.org/docs/7.x/recipe/common#deploypublish
     'deploy:publish'
