@@ -3,23 +3,23 @@
 {% block title %}Contact{% endblock %}
 
 {% block body %}
-<div class="container-xl bg-light p-5 border-top">
-    <h1>Contact : {{ contact.firstname }} {{ contact.lastname }}</h1>
 
-<a class="btn" href="{{ path('app_contact_index') }}"><span > Retour</span></a>
+<a class="btn btn-primary mb-2" href="{{ path('app_contact_index') }}"><span > Retour</span></a>
 
-    <table class="table">
+    <h1 class="mb-2">Contact : {{ contact.firstname }} {{ contact.lastname }}</h1>
+
+    <table class="table table-hover text-dark border-dark">
         <tbody>
             <tr>
-                <th>Firstname</th>
-                <td>{{ contact.firstname }}</td>
-            </tr>
-            <tr>
-                <th>Lastname</th>
+                <th>Nom</th>
                 <td>{{ contact.lastname }}</td>
             </tr>
             <tr>
-                <th>Maiden_name</th>
+                <th>Prénom</th>
+                <td>{{ contact.firstname }}</td>
+            </tr>
+            <tr>
+                <th>Nom de jeune fille</th>
                 <td>{{ contact.maidenName }}</td>
             </tr>
             <tr>
@@ -27,31 +27,31 @@
                 <td>{{ contact.mail }}</td>
             </tr>
             <tr>
-                <th>Adress</th>
+                <th>Adresse</th>
                 <td>{{ contact.adress }}</td>
             </tr>
             <tr>
-                <th>Zip_code</th>
+                <th>Code postal</th>
                 <td>{{ contact.zipCode }}</td>
             </tr>
             <tr>
-                <th>City</th>
+                <th>Ville</th>
                 <td>{{ contact.city }}</td>
             </tr>
             <tr>
-                <th>Phone_number</th>
+                <th>Tél:</th>
                 <td>{{ contact.phoneNumber }}</td>
             </tr>
             <tr>
-                <th>Content</th>
+                <th>Info suplémentaire</th>
                 <td>{{ contact.content }}</td>
             </tr>
             <tr>
-                <th>Preferency</th>
-                <td>{{ contact.preferency ? 'Yes' : 'No' }}</td>
+                <th>Prise de contact</th>
+                <td>{{ contact.preferency ? 'Tél' : 'Mail' }}</td>
             </tr>
             <tr>
-                <th>Created_at</th>
+                <th>Demandé le</th>
                 <td>{{ contact.createdAt ? contact.createdAt|date("m/d/Y", "Europe/Paris") : '' }}</td>
             </tr>
         </tbody>
@@ -59,7 +59,7 @@
 
     {% if babysittingService == true %}
     <h1>Service : Garde d'enfant</h1>
-        <table class="table">
+        <table class="table table-hover text-dark border-dark">
             <tbody>
                 <tr>
                     <th>Nombre d'enfant</th>
@@ -75,13 +75,13 @@
                 </tr>
                 {% for day in babysittingService.days %}
                 <tr>
-                    <th>le</th>
+                    <th>Le</th>
                     <td>{{day.name}} </td>
                 </tr>
                 {% endfor %}
                 {% for inter in babysittingService.intervention %}
                 <tr>
-                    <th>invertention choisi le</th>
+                    <th>Invertention choisi le</th>
                     <td>{{inter.moment}} </td>
                 </tr>
                 {% endfor %}
@@ -91,11 +91,11 @@
 
     {% if personalAssistanceService == true %}
     <h1>Service : Aide à la personne</h1>
-        <table class="table">
+        <table class="table table-hover text-dark border-dark">
             <tbody>
                 <tr>
                     <th>Avez vous une aide financière</th>
-                    <td>{{personalAssistanceService.financialHelp}}</td>
+                    <td>{{personalAssistanceService.financialHelp ? 'Oui' : 'Non' }}</td>
                 </tr>
                 <tr>
                     <th>Organisme</th>
@@ -117,7 +117,7 @@
                 {% endfor %}
                 {% for inter in personalAssistanceService.intervention %}
                 <tr>
-                    <th>invertention choisi le</th>
+                    <th>Invertention choisi le</th>
                     <td>{{inter.moment}} </td>
                 </tr>
                 {% endfor %}
@@ -127,7 +127,7 @@
 
     {% if housekeepingService == true %}
     <h1>Service : Ménager</h1>
-        <table class="table">
+        <table class="table table-hover text-dark border-dark">
             <tbody>
                 <tr>
                     <th>Nombre d'heure de menage</th>
@@ -149,7 +149,7 @@
 
     {% if administrativeDepartmentService == true %}
     <h1>Service : Administratif décès</h1>
-        <table class="table">
+        <table class="table table-hover text-dark border-dark">
             <tbody>
                 <tr>
                     <th>Prénom de la personne décédée</th>
@@ -194,15 +194,15 @@
             </tbody>
         </table>
     <h2>Personne en charge du décès</h2>
-        <table class="table">
+        <table class="table table-hover text-dark border-dark">
             <tbody>
-                <tr>
-                    <th>Prénom</th>
-                    <td>{{administrativeDepartmentService.firstname}}</td>
-                </tr>
                 <tr>
                     <th>Nom</th>
                     <td>{{administrativeDepartmentService.lastname}}</td>
+                </tr>
+                <tr>
+                    <th>Prénom</th>
+                    <td>{{administrativeDepartmentService.firstname}}</td>
                 </tr>
                 <tr>
                     <th>Adresse</th>
@@ -228,5 +228,4 @@
         {{ include('contact/_delete_form.html.twig') }}
     {% endif %}
 
-</div>
 {% endblock %}

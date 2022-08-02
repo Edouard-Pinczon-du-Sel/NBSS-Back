@@ -77,19 +77,7 @@ class ContactController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $contactRepository->add($contact, true);
-                  //email
-                  $email = (new Email())
-                  ->from('hello@example.com')
-                  ->to('you@example.com')
-                  //->cc('cc@example.com')
-                  //->bcc('bcc@example.com')
-                  //->replyTo('fabien@example.com')
-                  //->priority(Email::PRIORITY_HIGH)
-                  ->subject('formulaire  reçu!')
-                  ->text('formulaire  reçu')
-                  ->html('<p>formulaire  reçu</p>');
-                  $mailer->send($email);
-
+            
             return $this->redirectToRoute('app_contact_index', [], Response::HTTP_SEE_OTHER);
         }
 

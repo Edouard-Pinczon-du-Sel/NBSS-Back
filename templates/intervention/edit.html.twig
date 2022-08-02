@@ -1,13 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Modifier le moment d'intervention{% endblock %}
+{% block title %}Modifier une intervention{% endblock %}
 
 {% block body %}
-    <a class="btn" href="{{ path('app_intervention_index') }}">Retour</a>
-    <h1>Modifier le moment d'intervention</h1>
 
+    <a class="btn btn-dark" href="{{ path('app_intervention_index') }}">Retour</a>
+        <h1 class="mt-2">Modifier une intervention</h1>
     {{ include('intervention/_form.html.twig', {'button_label': 'Update'}) }}
 
-
-  
 {% endblock %}

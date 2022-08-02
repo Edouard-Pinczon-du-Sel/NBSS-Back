@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Ajouter un nouveau moment d'intervention{% endblock %}
+{% block title %}Nouvelle intervention{% endblock %}
 
 {% block body %}
-    <a class='btn' href="{{ path('app_intervention_index') }}">Retour</a>
-    <h1>Ajouter un nouveau moment d'intervention</h1>
 
+    <a class="btn btn-dark" href="{{ path('app_intervention_index') }}">Retour</a>
+        <h1 class="mt-2">Créer une nouvelle intervention</h1>
     {{ include('intervention/_form.html.twig') }}
 
 {% endblock %}

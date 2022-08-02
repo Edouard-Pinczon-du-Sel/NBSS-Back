@@ -1,35 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %} Frequence{% endblock %}
+{% block title %}Frequence{% endblock %}
 
 {% block body %}
-    <h1>listes des frequences</h1>
 
-   <table class=" table ">
+<a class="btn btn-dark" href="{{ path('app_frequency_new') }}">Ajouter</a>
+
+    <h1 class="mt-2">Fréquence d'invention</h1>
+
+   <table class="table table-hover text-dark border-dark">
         <thead>
             <tr>
-            
-                <th scope="col">Type</th>
-                <th scope="col">action</th>
+                <th scope="col">Fréquence</th>
+                <th scope="col">Action</th>
             </tr>
         </thead>
         <tbody >
         {% for frequency in frequencies %}
             <tr >
-               
-                <td  >{{ frequency.type }}</td>
-                <td class="edition">
-          <a class="btn"  href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">Modifier </a>
-                       {{ include('frequency/_delete_form.html.twig') }}
+                <td >{{ frequency.type }}</td>
+                <td>
+                <a class="btn btn-primary mb-1" href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">Modifier </a>
+                {{ include('frequency/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">no records found</td>
+                <td colspan="3">Aucune fréquence trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-        <a class="btn" href="{{ path('app_frequency_new') }}">Ajouer</a>
 
 {% endblock %}

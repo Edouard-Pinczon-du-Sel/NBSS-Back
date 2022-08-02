@@ -1,11 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}New Recruitment{% endblock %}
+{% block title %}Nouvelle annonce{% endblock %}
 
 {% block body %}
-    <a class='btn' href="{{ path('app_recruitment_index') }}">retour</a>
-    <h1>Créer une nouvelle annonce</h1>
 
+    <a class='btn btn-dark' href="{{ path('app_recruitment_index') }}">Retour</a>
+        <h1 class="mt-2">Créer une nouvelle annonce</h1>
     {{ include('recruitment/_form.html.twig') }}
 
 {% endblock %}

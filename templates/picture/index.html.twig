@@ -1,15 +1,16 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Picture index{% endblock %}
+{% block title %}Banque d'image{% endblock %}
 
 {% block body %}
-<div class="container-xl bg-secondary bg-gradient p-5 border-top text-white">
-    <h1>Picture index</h1>
-    <a class="btn" href="{{ path('app_picture_new') }}">Ajouter</a>
-    <table class="table text-white">
+
+<a class="btn btn-dark" href="{{ path('app_picture_new') }}">Ajouter</a>
+
+    <h1 class="mt-2">Banque d'image</h1>
+    
+    <table class="table table-hover text-dark border-dark">
         <thead>
-            <tr>
-                
+            <tr> 
                 <th>Place dans le carroussel</th>
                 <th>Nom</th>
                 <th>Poster</th>
@@ -19,21 +20,19 @@
         <tbody>
         {% for picture in pictures %}
             <tr>
-               
                 <td>{{ picture.placeOrder }}</td>
                 <td>{{ picture.image.originalName}}</td>
-                <td><img class="border img-thumbnail img-fluid image" src="{{ asset("images/carrousel/"~picture.image.name)}}"</td>
-
+                <td><img class="img-thumbnail img-fluid image" src="{{ asset("images/carrousel/"~picture.image.name)}}"</td>
                 <td>
                 {{ include('picture/_delete_form.html.twig') }}
                 </td>
             </tr>
         {% else %}
             <tr>
-                <td colspan="3">pas d'image trouvé</td>
+                <td colspan="3">Aucune image trouvée</td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-</div>
+
 {% endblock %}

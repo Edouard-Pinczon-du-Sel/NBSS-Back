@@ -1,34 +1,34 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Contact index{% endblock %}
+{% block title %}Contact{% endblock %}
 
 {% block body %}
 
-<a type="button" href="{{ path('app_contact_index') }}"><span class="btn my-2">Tous</span></a>
-<a type="button" href="{{ path('app_contact_babysitting') }}"><span class="btn">Service Babysitting</span></a>
-<a type="button" href="{{ path('app_contact_housekeeping') }}"><span class="btn">Service Ménager</span></a>
-<a type="button" href="{{ path('app_contact_personalAssistance') }}"><span class="btn">Service Aide à la personne</span></a>
-<a type="button" href="{{ path('app_contact_administrativeDepartment') }}"><span class="btn">Service Administratif Déçès</span></a>
+<a type="button" href="{{ path('app_contact_index') }}"><span class="btn btn-dark my-1">Tous</span></a>
+<a type="button" href="{{ path('app_contact_babysitting') }}"><span class="btn btn-dark my-1">Service Babysitting</span></a>
+<a type="button" href="{{ path('app_contact_housekeeping') }}"><span class="btn btn-dark my-1">Service Ménager</span></a>
+<a type="button" href="{{ path('app_contact_personalAssistance') }}"><span class="btn btn-dark my-1">Service Aide à la personne</span></a>
+<a type="button" href="{{ path('app_contact_administrativeDepartment') }}"><span class="btn btn-dark my-1">Service Administratif Déçès</span></a>
 
-    <h1>Liste des Contacts</h1>
+    <h1 class="mt-2">Demande de service</h1>
 
-    <table class="table">
+    <table class="table table-hover text-dark border-dark">
         <thead>
             <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Maiden_name</th>    
-                <th>City</th>
+                <th>Nom</th>
+                <th>Prénom</th>
+                <th>Nom de jeune fille</th>    
+                <th>Ville</th>
                 <th>Service</th>
-                <th>Created_at</th>
-                <th>actions</th>
+                <th>Demande fait le</th>
+                <th>Actions</th>
             </tr>
         </thead>
         <tbody>
         {% for contact in contacts %}
             <tr>
-                <td>{{ contact.firstname }}</td>
                 <td>{{ contact.lastname }}</td>
+                <td>{{ contact.firstname }}</td>
                 <td>{{ contact.maidenName }}</td>
                 <td>{{ contact.city }}</td>
             {% if contact.babysittingService == true %}
@@ -44,8 +44,8 @@
                 <td>Service : Administratif déçès</td>
             {% endif %}
                 <td>{{ contact.createdAt ? contact.createdAt|date('Y-m-d') : '' }}</td>  
-                 <td class="edition">
-                <a type="button" href="{{ path('app_contact_show', {'id': contact.id}) }}"><span class="btn"> Voir </span></a>
+                <td>
+                <a type="button" class="btn btn-primary mb-1" href="{{ path('app_contact_show', {'id': contact.id}) }}">Voir</a>
                 {% if is_granted('ROLE_ADMIN') %}
                     {{ include('contact/_delete_form.html.twig') }}
                 {% endif %}
@@ -53,7 +53,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="13">no records found</td>
+                <td colspan="13">Vous n'avez pas de demmande</td>
             </tr>
         {% endfor %}
         </tbody>
