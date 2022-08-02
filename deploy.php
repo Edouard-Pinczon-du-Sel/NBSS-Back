@@ -49,7 +49,7 @@ set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
 
 // Nom de la branche à déployer
-set('repository_target_branch', 'development');
+set('repository_target_branch', 'correctionCSS);
 
 // ---------------------------------------------------------------------------
 // Autres paramètres concernant le déploiement
@@ -99,10 +99,10 @@ task('init:database', function() {
     run('{{bin/console}} doctrine:database:create');
 });
 
-//desc('Supression base de données');
-//task('init:database:drop', function() {
-    //run('{{bin/console}} doctrine:database:drop --if-exists --no-interaction --force');
-//});
+desc('Supression base de données');
+task('init:database:drop', function() {
+    run('{{bin/console}} doctrine:database:drop --if-exists --no-interaction --force');
+});
 
 //desc("Création des fixtures");
 //task('init:fixtures', function () {
@@ -145,7 +145,7 @@ task('first_deploy', [
     'deploy:cache:clear',
 
     // au cas où il existe la BDD
-    //'init:database:drop',
+    'init:database:drop',
 
     // on crée la base de donnée
     'init:database',
