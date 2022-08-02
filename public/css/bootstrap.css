@@ -119,7 +119,7 @@ h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
   margin-bottom: 1rem;
   font-weight: 700;
   line-height: 1.2;
-  color:#006072;
+  color:white;
 }
 
 h1, .h1 {
@@ -1818,7 +1818,7 @@ progress {
 
 .table-hover > tbody > tr:hover > * {
   --bs-table-accent-bg: var(--bs-table-hover-bg);
-  color: #006072;
+  color: white;
 }
 
 .table-primary {
@@ -8213,7 +8213,7 @@ textarea.form-control-lg {
 
 .bg-primary {
   --bs-bg-opacity: 1;
-  background-color: rgba(var(--bs-primary-rgb), var(--bs-bg-opacity)) !important;
+  background-color: #E36386;
 }
 
 .bg-secondary {
@@ -10911,8 +10911,9 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
 body {
-  background-image: linear-gradient(90deg, #ffffff, #fbfbfb, #dadce0);
+  background-image: linear-gradient(90deg, #157fb1, #33b7e2, #7be9ff);
 }
 
 .table-secondary {
