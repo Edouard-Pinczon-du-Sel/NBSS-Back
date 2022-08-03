@@ -97,6 +97,8 @@
         </tbody>
     </table>
 
-    <a class='btn btn-dark' href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">modifier</a>
+    {% if is_granted('ROLE_ADMIN') %}
+        <a class='btn btn-dark' href="{{ path('app_recruitment_edit', {'id': recruitment.id}) }}">Modifier</a>
+    {% endif %}
    
 {% endblock %}

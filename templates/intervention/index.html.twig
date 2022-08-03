@@ -21,8 +21,10 @@
                 <td>{{ intervention.moment }}</td>
                 <td> 
                 <div class="col d-flex">
-                <a class="btn btn-primary mx-1" href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">Modifier</a>
-                {{ include('intervention/_delete_form.html.twig') }}
+                    <a class="btn btn-primary mx-1" href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">Modifier</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ include('intervention/_delete_form.html.twig') }}
+                {% endif %}
                 </div>
                 </td>
             </tr>

@@ -6,6 +6,8 @@
 
     <a class="btn btn-dark mb-2" href="{{ path('app_intervention_index') }}">Retour</a>
         <h1 class="mt-2">Modifier une intervention</h1>
-    {{ include('intervention/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('intervention/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {% endif %}
 
 {% endblock %}

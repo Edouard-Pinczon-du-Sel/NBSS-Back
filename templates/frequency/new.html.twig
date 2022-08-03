@@ -6,6 +6,8 @@
 
     <a class="btn btn-dark" href="{{ path('app_frequency_index') }}">Retour</a>
         <h1 class="mt-2">Créer une nouvelle fréquance</h1>
-    {{ include('frequency/_form.html.twig') }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('frequency/_form.html.twig') }}
+    {% endif %}
 
 {% endblock %}

@@ -6,6 +6,8 @@
 
     <a class="btn btn-dark mb-2" href="{{ path('app_recruitment_index') }}">Retour</a>
         <h1 class="mt-2">Modifier une annonce</h1>
-    {{ include('recruitment/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {% if is_granted('ROLE_ADMIN') %}
+        {{ include('recruitment/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {% endif %}
 
 {% endblock %}

@@ -21,8 +21,10 @@
                 <td>{{ personal_assistance.type }}</td>
                 <td>
                 <div class="col d-flex">
-                <a class="btn btn-primary mx-1" href="{{ path('app_personal_assistance_edit', {'id': personal_assistance.id}) }}">Modifier</a>
-                {{ include('personal_assistance/_delete_form.html.twig') }}
+                    <a class="btn btn-primary mx-1" href="{{ path('app_personal_assistance_edit', {'id': personal_assistance.id}) }}">Modifier</a>
+                {% if is_granted('ROLE_ADMIN') %}
+                    {{ include('personal_assistance/_delete_form.html.twig') }}
+                {% endif %}
                 </div>
                 </td>
             </tr>
