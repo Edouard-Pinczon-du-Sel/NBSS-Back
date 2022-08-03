@@ -69,6 +69,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/new", name="app_contact_new", methods={"GET", "POST"})
      */
+    /*
     public function new(Request $request, ContactRepository $contactRepository,MailerInterface $mailer): Response
     {
         $contact = new Contact();
@@ -86,6 +87,7 @@ class ContactController extends AbstractController
             'form' => $form,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}", name="app_contact_show", methods={"GET"})
@@ -108,6 +110,7 @@ class ContactController extends AbstractController
     /**
      * @Route("/{id}/edit", name="app_contact_edit", methods={"GET", "POST"})
      */
+    /*
     public function edit(Request $request, Contact $contact, ContactRepository $contactRepository): Response
     {
         $form = $this->createForm(ContactType::class, $contact);
@@ -124,6 +127,7 @@ class ContactController extends AbstractController
             'form' => $form,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}", name="app_contact_delete", methods={"POST"})

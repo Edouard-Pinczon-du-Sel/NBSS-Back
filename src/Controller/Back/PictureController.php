@@ -54,16 +54,19 @@ class PictureController extends AbstractController
     /**
      * @Route("/{id}", name="app_picture_show", methods={"GET"})
      */
+    /*
     public function show(Picture $picture): Response
     {
         return $this->render('picture/show.html.twig', [
             'picture' => $picture,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}/edit", name="app_picture_edit", methods={"GET", "POST"})
      */
+    /*
     public function edit(Request $request, Picture $picture, PictureRepository $pictureRepository): Response
     {
         $form = $this->createForm(PictureType::class, $picture);
@@ -80,6 +83,7 @@ class PictureController extends AbstractController
             'form' => $form,
         ]);
     }
+    */
 
     /**
      * @Route("/{id}", name="app_picture_delete", methods={"POST"})

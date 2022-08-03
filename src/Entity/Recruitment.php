@@ -36,7 +36,6 @@ class Recruitment
 
     /**
      * @ORM\Column(type="date", nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $published_on;
@@ -57,7 +56,6 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title_description2;
@@ -71,14 +69,12 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $title_description3;
 
     /**
      * @ORM\Column(type="text", nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $description3;
@@ -92,28 +88,24 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $avantage;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $licence_requeried;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $experience_requeried;
 
     /**
      * @ORM\Column(type="boolean")
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $drive_license;
@@ -127,35 +119,30 @@ class Recruitment
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $salary;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $deplacement_info;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $day_off;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $opportunity;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
-     * @Assert\NotBlank()
      * @Groups("app_api_recruitment")
      */
     private $working_hour;

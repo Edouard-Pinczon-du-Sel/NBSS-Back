@@ -118,7 +118,7 @@ CREATE TABLE `doctrine_migration_versions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
-('DoctrineMigrations\\Version20220731230048',	'2022-08-01 01:00:57',	250);
+('DoctrineMigrations\\Version20220801124128',	'2022-08-01 14:41:40',	239);
 
 DROP TABLE IF EXISTS `frequency`;
 CREATE TABLE `frequency` (
@@ -261,7 +261,7 @@ CREATE TABLE `recruitment` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `recruitment` (`id`, `title`, `visibility`, `published_on`, `title_description`, `description`, `title_description2`, `description2`, `title_description3`, `description3`, `we_search`, `avantage`, `licence_requeried`, `experience_requeried`, `drive_license`, `type_contrat`, `salary`, `deplacement_info`, `day_off`, `opportunity`, `working_hour`) VALUES
-(1,	'AVS ou AMP ou Aide-soignante',	1,	NULL,	'Aide à la personne',	'Aide à la toilette, aide à l\'habillage, aide au lever, aide aux déplacements, courses, préparation et aide à la  prise de repas, accompagnement aux sorties',	'Aides ménagères ',	'Entretien du linge, entretien du cadre de vie, ménage ',	'Garde d\'enfants ',	'Accompagnement aux gestes de la vie quotidienne, aide au repas, accompagnement aux sorties, aide aux devoirs pour un enfant en situation de handicap (dès septembre 2022)',	'Nous recherchons une personne polyvalente, aimant prendre des initiatives, ayant un sens de l\'organisation, aimant le relationnel avec les bénéficiaires et le partage avec ses collègues de travail. ',	'Voiture de société selon disponibilité et planning, des plannings permettant d\'équilibrer vie personnelle et professionnelle, entreprise à taille humaine, chèque cadeau ',	'Être titulaire d\'un diplôme ou titre de niveau V (auxiliaire de vie, aide médico psychologique, assistante de vie, aide-soignante, auxiliaire de gérontologie ) ou diplôme CAP petite enfance ou expérience dans la garde d\'enfant ',	' ',	1,	'CDI à temps partiel ',	'À partir de 11,07 € brut de l\'heure et valorisation selon profil et expérience ',	'Frais kilométriques à 0,40 € si véhicule de société non disponible ',	'Tous les mercredis',	'Prise de poste dès que possible, venez nous rejoindre!! ',	' 100 heures par mois évolutif');
+(1,	'AVS ou AMP ou Aide-soignante',	1,	'2022-08-03',	'Aide à la personne',	'Aide à la toilette, aide à l\'habillage, aide au lever, aide aux déplacements, courses, préparation et aide à la  prise de repas, accompagnement aux sorties',	'Aides ménagères',	'Entretien du linge, entretien du cadre de vie, ménage',	'Garde d\'enfants',	'Accompagnement aux gestes de la vie quotidienne, aide au repas, accompagnement aux sorties, aide aux devoirs pour un enfant en situation de handicap (dès septembre 2022)',	'Nous recherchons une personne polyvalente, aimant prendre des initiatives, ayant un sens de l\'organisation, aimant le relationnel avec les bénéficiaires et le partage avec ses collègues de travail.',	'Voiture de société selon disponibilité et planning, des plannings permettant d\'équilibrer vie personnelle et professionnelle, entreprise à taille humaine, chèque cadeau',	'Être titulaire d\'un diplôme ou titre de niveau V (auxiliaire de vie, aide médico psychologique, assistante de vie, aide-soignante, auxiliaire de gérontologie ) ou diplôme CAP petite enfance ou expérience dans la garde d\'enfant',	NULL,	1,	'CDI à temps partiel',	'À partir de 11,07 € brut de l\'heure et valorisation selon profil et expérience',	'Frais kilométriques à 0,40 € si véhicule de société non disponible',	'Tous les mercredis',	'Prise de poste dès que possible, venez nous rejoindre!!',	'100 heures par mois évolutif');
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE `user` (
@@ -274,7 +274,6 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `user` (`id`, `email`, `roles`, `password`) VALUES
-(1,	'admin@admin.com',	'[\"ROLE_ADMIN\"]',	'$2y$13$mF7yH3UE2u9sm8pjqD6Sa.W3U90sHS/NucXMYioqR1wwV5Gxs3rba'),
-(2,	'manager@manager.com',	'[\"ROLE_MANAGER\"]',	'$2y$13$1OREOb3M1.JdrsU7TkmbGeCcTg7nkhyHTqB8wmmsgebOGTnA/Lmoa');
+(1,	'nbsstest1@gmail.com',	'[\"ROLE_ADMIN\"]',	'$2y$13$IXIk24oxZTrshcxotczgIOmBqYEtGG3T0WZGUNaGTmPaw4D8HRptW');
 
--- 2022-07-31 23:04:14
+-- 2022-08-03 14:43:23
