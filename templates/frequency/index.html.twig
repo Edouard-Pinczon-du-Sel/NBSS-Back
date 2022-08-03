@@ -20,8 +20,10 @@
             <tr >
                 <td >{{ frequency.type }}</td>
                 <td>
-                <a class="btn btn-primary mb-1" href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">Modifier </a>
+                <div class="col d-flex">
+                <a class="btn btn-primary mx-1" href="{{ path('app_frequency_edit', {'id': frequency.id}) }}">Modifier </a>
                 {{ include('frequency/_delete_form.html.twig') }}
+                </div>
                 </td>
             </tr>
         {% else %}

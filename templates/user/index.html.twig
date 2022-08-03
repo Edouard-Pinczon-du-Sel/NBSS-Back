@@ -22,8 +22,10 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.roles ? user.roles|json_encode : '' }}</td>
                 <td>
-                    <a class="btn btn-primary mb-1" href="{{ path('app_user_edit', {'id': user.id}) }}">modifier</a>
+                <div class="col d-flex">
+                    <a class="btn btn-primary mx-1" href="{{ path('app_user_edit', {'id': user.id}) }}">modifier</a>
                     {{ include('user/_delete_form.html.twig') }}
+                </div>
                 </td>
             </tr>
         {% else %}

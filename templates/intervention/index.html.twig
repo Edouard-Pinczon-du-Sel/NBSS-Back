@@ -20,8 +20,10 @@
             <tr>
                 <td>{{ intervention.moment }}</td>
                 <td> 
-                <a class="btn btn-primary mb-1" href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">Modifier</a>
+                <div class="col d-flex">
+                <a class="btn btn-primary mx-1" href="{{ path('app_intervention_edit', {'id': intervention.id}) }}">Modifier</a>
                 {{ include('intervention/_delete_form.html.twig') }}
+                </div>
                 </td>
             </tr>
         {% else %}
