@@ -13,8 +13,8 @@ set('composer_options', '--verbose --prefer-dist --no-progress --no-interaction 
 // ---------------------------------------------------------------------------
 // Paramètres de notre application
 // ---------------------------------------------------------------------------
-set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
-//set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+// set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
+set("env_database", "mysql://explorateur:Ereul9Aeng@127.0.0.1:3306/NBSS?serverVersion=mariadb-10.3.25&charset=utf8mb4");
 
 // ---------------------------------------------------------------------------
 // Paramètres de connexion au serveur distant
@@ -29,7 +29,7 @@ set("env_database", "mysql://curie_admin:curie_admin@127.0.0.1:3306/NBSS?serverV
 
 // Adresse du serveur distant (adresse IP ou DNS public)
 // set('remote_server_url','adresse_ip_ou_dns_public_du_serveur');
-set('remote_server_url','gatechien-server.eddi.cloud');
+set('remote_server_url','edouard-pinczon-du-sel-server.eddi.cloud');
 //set('remote_server_url','virginieboissiere-server.eddi.cloud');
 
 // Nom du compte utilisateur sur le serveur distant/
@@ -46,7 +46,7 @@ set('remote_server_user','student');
 set('remote_server_target_repository', '/var/www/html/NB-services-et-soin');
 
 // Adresse du dépôt Github contenant le code source du projet 
-set('repository', 'git@github.com:O-clock-Curie/projet-18-nb-services-et-soins-back.git');
+set('repository', 'git@github.com:Edouard-Pinczon-du-Sel/NBSS-Back.git');
 
 // Nom de la branche à déployer
 set('repository_target_branch', 'development');
